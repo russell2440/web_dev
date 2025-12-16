@@ -1,0 +1,136 @@
+/* some web safe fonts:
+
+- Serif fonts:
+Georgia, serif;
+"Palatino Linotype", "Book Antiqua", Palatino, serif;
+"Times New Roman", Times, serif
+
+- Sans-Serif fonts
+Arial, Helvetica, sans-serif;
+"Arial Black", Gadget, sans-serif;
+"Comic Sans MS", cursive, sans-serif;
+Impact, Charcoal, sans-serif;
+
+- Monospace fonts
+"Courier New", Courier, monospace;
+"Lucida Console", Monaco, monospace;
+*/
+
+/* tag selectors */
+body {
+font-family: "courier new", courier, monospace;
+font-family: georgia, "times new roman", times, serif;
+font-size; 16px;
+color: #000;
+background-color: #FFF;
+}
+
+h1, h2, h3 {
+font-family: 'shadows into light', cursive;
+max-width: 500px;}
+
+h1 {
+font-weight: bold;
+font-size: 2em;
+text-transform: capitalize;
+}
+
+h2 {
+font-weight: bold;
+text-align: center;
+}
+
+h3 {
+font-weight: bold;
+text-align: left; /* remove since left is the default */
+margin-top: 30px;
+}
+
+p {
+text-indent: 20px;
+text-align: justify;
+width: 80%;
+}
+
+ul li {
+  list-style-type: circle;
+  line-height: 200%;
+}
+
+ol li {
+  list-style-type: numbers;
+  line-height: 180%%;
+  width: 65%;
+}
+
+
+/* id selectors */
+#main_image {
+  float: right;
+  margin: 10px;
+  margin-bottom: 50px;
+  margin-right: 20%;
+}
+
+/* pseudo-classes */
+a:link {color: green; text-decoration: none;}
+a:visited {color: green; background: red;}
+a:hover {color: blue; text-decoration: underline;}
+a:active {color: green; text-decoration: bold;}
+
+#center_doc a:link {color: green; text-decoration: underline}
+
+#center_doc a:hover {color: blue;}
+
+
+/* id selectors */
+#navigation {
+  position: absolute;
+  z-index: 10;
+  width: 210px;
+  height: 600px;
+  margin: 0;
+  border-right: 1px solid #000;
+  font-weight: normal;
+}
+
+#center_doc {
+  position: absolute;
+  z-index: 15;
+  padding: 0 0 20px 20px;
+  margin-top: 50px;
+  margin-left: 235px;
+  width: 80%;
+  max-width: 1200px;
+  min-width: 500px;
+}
+
+/*
+  Edu SA Hand: CSS class for a variable style
+    <weight>: Use a value from 400 to 700
+    <uniquifier>: Use a unique and descriptive class name
+*/
+
+.edu-sa-hand-400 {
+  font-family: "Edu SA Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/*
+  Roboto: CSS class for a variable style
+    <weight>: Use a value from 100 to 900
+    <uniquifier>: Use a unique and descriptive class name
+*/
+
+.roboto-400 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+

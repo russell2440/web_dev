@@ -1,0 +1,226 @@
+/* some web safe fonts:
+
+- Serif fonts:
+Georgia, serif;
+"Palatino Linotype", "Book Antiqua", Palatino, serif;
+"Times New Roman", Times, serif
+
+- Sans-Serif fonts
+Arial, Helvetica, sans-serif;
+"Arial Black", Gadget, sans-serif;
+"Comic Sans MS", cursive, sans-serif;
+Impact, Charcoal, sans-serif;
+
+- Monospace fonts
+"Courier New", Courier, monospace;
+"Lucida Console", Monaco, monospace;
+*/
+
+/*
+  background-color: #FFF;
+  background-image: url("../images/vintage-8840474_640.jpg");
+  background-repeat: repeat-y;
+  background-position: right;
+  background-attachment: fixed;
+  background-size: 150px;
+*/
+
+body, p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* tag selectors */
+body {
+  margin: 0;
+  font-family: "courier new", courier, monospace;
+  font-family: georgia, "times new roman", times, serif;
+  font-size: 16px;
+  color: #000;
+
+  background-image: url("../images/news-744308_640.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; /* THIS makes it cover the entire screen */
+  background-position: center; /* Keeps it centered while scrolling */
+  background-attachment: fixed; /* optional: makes it fixed while scrolling */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.79);
+}
+
+
+h1, h2, h3 {
+  font-family: 'shadows into light', cursive;
+  max-width: 500px;
+  background-color: #d4c2ae;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: capitalize;
+  border-style: groove;
+  border-width: 8px;
+  padding: 10px;
+  margin: 30px;
+}
+
+h2 {
+  font-weight: bold;
+  text-align: center;
+}
+
+h3 {
+  font-weight: bold;
+  text-align: left; /* remove since left is the default */
+  margin-top: 30px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+p {
+text-indent: 20px;
+text-align: justify;
+width: 80%;
+}
+
+ul li {
+  list-style-type: circle;
+  line-height: 200%;
+}
+
+ol li {
+  list-style-type: decimal;
+  line-height: 180%;
+  width: 65%;
+}
+
+
+.inner_p {
+  padding: 20px;
+  background-color: #0f0;
+  opacity: 0.6;
+  height: 50%;
+}
+
+/* id selectors */
+#main_press {
+  float: right;
+  margin: 10px;
+  margin-bottom: 50px;
+  margin-right: 20%;
+}
+
+/* pseudo-classes */
+a:link, a:visited {
+  color: #000 ; 
+  text-decoration: none;
+  background-color: #d4c2ae;
+  padding: 10px;
+  display: block;
+  width: 120px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: margin-bottom 0.2s ease-in;
+}
+
+a:hover {
+  color: #fff; 
+  background-color: #000;
+  margin-bottom: 35px;
+}
+
+a:active {
+  color: green; 
+  text-decoration: bold;
+}
+
+#center_doc a {background-color: transparent;}
+#center_doc a:link, #centerdoc a:visited {color: #000; text-decoration: underline}
+#center_doc a:hover {color: #f00; margin-bottom: 0px;}
+
+
+/* id selectors */
+#navigation {
+  position: absolute;
+  z-index: 10;
+  width: 210px;
+  height: 600px;
+  margin: 0;
+  border-right: 1px solid #000;
+  font-weight: normal;
+}
+
+#center_doc {
+  position: absolute;
+  z-index: 15;
+  padding: 0 0 20px 20px;
+  margin-top: 50px;
+  margin-left: 235px;
+  width: 80%;
+  max-width: 1200px;
+  min-width: 500px;
+}
+
+#div_1 { 
+    width: 690px; 
+    margin: 10px auto; 
+    padding: 200px 30px; 
+    border: 5px solid #000;
+    background-color: #fff;
+    background-image: url("../images/news-744308_640.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    height: 700px;
+}
+
+#div_2 { 
+    width: 800px; 
+    margin: 10px auto; 
+    background-color: #0f0;
+    border: 1px solid #000;
+    padding: 25px;
+    border-radius: 30px;
+}
+
+/* Checkout the LISTS Demo page */
+
+/*
+See all the list style types:
+https://www.w3schools.com/cssref/tryit.php?filename=trycss_list-style-type_all
+ */
+body.lists {font-size: 1.5em;}
+
+ul.none, ol.none {list-style-type: none;}
+
+ul.a {list-style-type: circle;}
+ul.b {list-style-type: disc;}
+ul.c {list-style-type: square;}
+
+ol.d {list-style-type: lower-alpha;}
+ol.e {list-style-type: lower-greek;}
+ol.f {list-style-type: lower-latin;}
+ol.g {list-style-type: lower-roman;}
+
+ol.h {list-style-type: upper-alpha;}
+ol.i {list-style-type: upper-latin;}
+ol.j {list-style-type: upper-roman;}
+
+
+.rhs_bullet {
+  /*
+  list-style-image: url('../images/rhs_bullet.png');
+  */
+  background-image: url('../images/rhs_bullet.png');
+  background-repeat: no-repeat;
+  padding: 5px 0 5px 30px;
+  background-position: 0 0;
+  background-color: green;
+
+  margin-bottom: 8px;
+}

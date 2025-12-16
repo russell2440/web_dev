@@ -1,0 +1,71 @@
+/* some web safe fonts:
+
+- Serif fonts:
+Georgia, serif;
+"Palatino Linotype", "Book Antiqua", Palatino, serif;
+"Times New Roman", Times, serif
+
+- Sans-Serif fonts
+Arial, Helvetica, sans-serif;
+"Arial Black", Gadget, sans-serif;
+"Comic Sans MS", cursive, sans-serif;
+Impact, Charcoal, sans-serif;
+
+- Monospace fonts
+"Courier New", Courier, monospace;
+"Lucida Console", Monaco, monospace;
+*/
+
+/*
+  background-color: #FFF;
+  background-image: url("../images/vintage-8840474_640.jpg");
+  background-repeat: repeat-y;
+  background-position: right;
+  background-attachment: fixed;
+  background-size: 150px;
+*/
+
+/* Checkout the LISTS Demo page */
+
+/*
+See all the list style types:
+https://www.w3schools.com/cssref/tryit.php?filename=trycss_list-style-type_all
+ */
+
+body, p {
+  margin: 0px;
+  padding: 0px;
+  /*
+  font-size: 1.5em;
+   */
+}
+
+
+ul.none, ol.none {list-style-type: none;}
+
+ul.a {list-style-type: circle;}
+ul.b {list-style-type: disc;}
+ul.c {list-style-type: square;}
+
+ol.d {list-style-type: lower-alpha;}
+ol.e {list-style-type: lower-greek;}
+ol.f {list-style-type: lower-latin;}
+ol.g {list-style-type: lower-roman;}
+
+ol.h {list-style-type: upper-alpha;}
+ol.i {list-style-type: upper-latin;}
+ol.j {list-style-type: upper-roman;}
+
+
+.rhs_bullet {
+  /*
+  list-style-image: url('../images/rhs_bullet.png');
+  */
+  background-image: url('../images/rhs_bullet.png');
+  background-repeat: no-repeat;
+  padding: 5px 0 5px 30px;
+  background-position: 0 0;
+  background-color: green;
+
+  margin-bottom: 8px;
+}

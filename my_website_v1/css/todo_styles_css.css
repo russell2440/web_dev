@@ -1,0 +1,149 @@
+/* Reset-ish */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; background: #f3f4f6; }
+
+/* Top-left date */
+.top-left {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: rgba(255,255,255,0.85);
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  z-index: 10;
+}
+
+/* Center layout */
+.app-container {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+/* Card */
+.todo-card {
+  width: 100%;
+  max-width: 720px;
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+}
+
+/* Visually hidden helper */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* Form */
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow .12s, border-color .12s;
+  background: #fbfdff;
+}
+
+#todo-input:focus {
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  border-color: #cbd5e1;
+}
+
+#add-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #0b63ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .06s ease;
+}
+
+#add-btn:active { transform: translateY(1px); }
+
+/* Empty message */
+.muted { color: #64748b; margin-bottom: 12px; }
+
+/* Group date header */
+.group {
+  margin-top: 14px;
+}
+
+.group-header {
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0f172a;
+}
+
+/* Bullet list per group */
+.group-list {
+  list-style: disc inside;
+  margin-left: 6px;
+  padding-left: 6px;
+  margin-bottom: 6px;
+}
+
+/* Individual item */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 4px;
+}
+
+.item-text {
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  border: 1px solid #f1f5f9;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.delete-btn:hover {
+  background: #fff1f1;
+  border-color: #fee2e2;
+}
+
+/* Timestamp (small, right side) */
+.item-meta {
+  font-size: 0.78rem;
+  color: #475569;
+  margin-left: 12px;
+}
+
+/* Make sure lists look compact on small screens */
+@media (max-width:520px){
+  .todo-card { padding: 18px; border-radius: 10px; }
+  #add-btn { padding: 10px; font-size: 0.95rem; }
+}

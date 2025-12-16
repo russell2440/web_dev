@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple To-Do List</title>
+  <link rel="stylesheet" href="../css/todo_styles_css.css" />
+</head>
+<body>
+  <!-- Top-left date -->
+  <header class="top-left">
+    <div id="today-date" aria-live="polite"></div>
+  </header>
+
+  <!-- Centered app area -->
+  <main class="app-container" role="main">
+    <section class="todo-card" aria-labelledby="app-title">
+      <h1 id="app-title" class="visually-hidden">To-Do List</h1>
+
+      <!-- Input form -->
+      <form id="todo-form" class="todo-form" autocomplete="off" aria-label="Add item">
+        <input id="todo-input"
+               name="todo"
+               type="text"
+               placeholder="Add a new to-do and press Enter"
+               maxlength="250"
+               required
+               aria-required="true" />
+        <button type="submit" id="add-btn" aria-label="Add item">Add</button>
+      </form>
+
+      <!-- Message when list empty -->
+      <p id="empty-msg" class="muted">No items yet — add something!</p>
+
+      <!-- Container for grouped lists -->
+      <div id="list-container" class="list-container" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="../js/todo_app_js.js"></script>
+</body>
+</html>

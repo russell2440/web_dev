@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS selectors</title>
+
+    <!--    selector ----------    declaration block            -->
+    <!--  tag, class, id -- declaration;        declaration;... -->
+    <!--                      property: value                   -->
+
+    <!-- Tag selectors -->
+    <style>
+      h1 {color: green; font-size: 48px}
+      h2 {color: orange; text-align: center}
+      p {color: blue; font-weight: bolder}
+    </style>
+
+    <!-- Class selector -->
+    <style>
+      .super_h1 {
+        color: red; font-size: 55px; background-color: blue
+      }
+    </style>
+
+    <!-- ID selector -->
+    <style>
+      #super_tag {
+        color: blue; font-size: 55px; background-color: red
+      }
+    </style>
+
+    <!-- Class selectors for practice -->
+    <style>
+      aside {
+        width: 30%;
+        padding-left: 15px;
+        margin-left: 15px;
+        float: right;
+        font-style: italic;
+        background-color: lightgray;
+      }
+    </style>
+
+    <style>
+      .all-browsers {
+        margin: 0;
+        padding: 5px;
+        background-color: lightgray;
+      }
+      
+      .all-browsers > h1 {
+        margin: 10px;
+        padding: 5px;
+      }
+      
+      .browser {
+        margin: 10px;
+        padding: 5px;
+        background: white;
+      }
+      
+      .browser > h2, .browser > p {
+        margin: 4px;
+        font-size: 90%;
+      }
+
+      .video-container video {
+        margin: 10px;
+        padding: 0px;
+        width: 90%;
+        height: auto;
+        display: block;
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <p>personal <a target="_home" href="../index.html">home page.</a></p>
+  
+    <hr>
+  
+    <h1>Selectors Demo:</h1>
+  
+    <hr>
+  
+    <p>Stef's structural tags lesson: <a target="_stefs_structural_tags_lesson" href="https://school.studioweb.com/user/course/html5_pro/chapter9/lesson3">Stems structural tags lesson</a></p>
+    <p>W3C schools html semantic tags link: <a target="_w3c_html_semantic_tags" href="https://www.w3schools.com/html/html5_semantic_elements.asp">w3c html semantic tags</a></p>
+
+  
+    <hr>
+  
+    <header>
+      <h1 class="super_h1">Header tag: a header element represents a container for intro content</h1>
+      <p>Heading elements, logo or icon, or authorship info.</p>
+    </header>
+    
+    <nav>
+      <h2>HTML nav elements defines a set of navigation links. </h2>
+      <a href="./forms_page.html">forms page</a> |
+      <a href="./my_plans.html">plans page</a> |
+      <a href=./my_work.html"">works page</a> |
+      <a href=./tables.html"">tables page</a>
+    </nav>
+
+    <h2>Section's are useful for: Chapters, Introductions, News items, Contact information. It is a thematic grouping of content</h2>
+    <section>
+      <h3 id="super_tag">Lorem Ipsum section 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br> <strong>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br> <strong>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>
+    </section>
+
+    <section>
+      <h3>Lorem Ipsum section 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br> <strong>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br> <strong>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>
+    </section>
+    <section>
+      <h3>Lorem Ipsum section 3</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br> <strong>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br> <strong>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>
+    </section>
+    <section>
+      <h3>Lorem Ipsum section 4</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br> <strong>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br> <strong>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>
+    </section>
+ </body>
+</html>
