@@ -82,11 +82,23 @@ h3 {
   border-bottom-width: 2px;
 }
 
+
 p {
 text-indent: 20px;
 text-align: justify;
 width: 80%;
 }
+
+p.italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+p .italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
 
 ul li {
   list-style-type: circle;
@@ -112,14 +124,14 @@ ul li {list-style-type: none;}
 
 /* pseudo-classes */
 a:link, a:visited {
-  color: #000 ; 
-  text-decoration: none;
-  background-color: #d4c2ae;
+  width: 120px;
+  margin-bottom: 10px;
   padding: 10px;
   display: block;
-  width: 120px;
+  color: #000 ;
+  background-color: #d4c2ae;
+  text-decoration: none;
   border-radius: 10px;
-  margin-bottom: 10px;
   transition: margin-bottom 0.2s ease-in;
 }
 
@@ -135,7 +147,7 @@ a:active {
 }
 
 #center_doc a {background-color: transparent;}
-#center_doc a:link, #centerdoc a:visited {color: #000; text-decoration: underline}
+#center_doc a:link, #center_doc a:visited {color: #000; text-decoration: underline}
 #center_doc a:hover {color: #f00; margin-bottom: 0px;}
 
 

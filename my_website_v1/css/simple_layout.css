@@ -1,54 +1,53 @@
 
-body, p {
-  margin: 0px;
-  padding: 0px;
+nav, main {
+  display: block;
 }
 
-/* tag selectors */
 body {
   margin: 0;
-  font-family: "courier new", courier, monospace;
   font-family: georgia, "times new roman", times, serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
   background-color: #fff;
 }
 
 
-h1, h2, h3 {
-  font-family: 'shadows into light', cursive;
-  max-width: 500px;
-  background-color: #d4c2ae;
-}
-
 h1 {
+  font-size: 18px;
   font-weight: bold;
-  font-size: 2em;
-  text-transform: capitalize;
-  border-style: groove;
-  border-width: 8px;
-  padding: 10px;
-  margin: 30px;
+  color: #000;
 }
 
 h2 {
+  font-size: 16px;
   font-weight: bold;
+  color: #000;
   text-align: center;
 }
 
 h3 {
+  font-size: 14px;
   font-weight: bold;
-  text-align: left; /* remove since left is the default */
+  color: #000;
+  text-align: left;
   margin-top: 30px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
 }
 
+
 p {
-text-indent: 20px;
-text-align: justify;
-width: 80%;
+  width: 80%;
 }
+
+p.italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+p .italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
 
 ul li {
   list-style-type: circle;
@@ -61,65 +60,52 @@ ol li {
   width: 65%;
 }
 
-ul li {
-  list-style-type: none;
-}
 
 /* pseudo-classes */
-a:link, a:visited {
-  color: #000 ; 
+a:link {
+  color: green ;
   text-decoration: none;
-  background-color: #d4c2ae;
-  padding: 10px;
-  display: block;
-  width: 120px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  transition: margin-bottom 0.2s ease-in;
+}
+a:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
-a:hover {
-  color: #fff; 
-  background-color: #000;
-  margin-bottom: 35px;
+a:visited {
+  color: green;
+  background: red;
 }
 
 a:active {
   color: green; 
-  text-decoration: bold;
+  font-weight: bold;
 }
 
-
-#center_doc a {background-color: transparent;}
-#center_doc a:link, #centerdoc a:visited {color: #000; text-decoration: underline}
-#center_doc a:hover {color: #f00; margin-bottom: 0px;}
+main a:link{color: green; text-decoration: underline; display: block;}
 
 
 /* id selectors */
-#navigation {
-  position: absolute;
-  width: 210px;
+nav {
+  width: 18%;
   height: 600px;
   margin: 0;
   border-right: 1px solid #000;
   font-weight: normal;
 }
 
-#main_press {
+main {
+  width: 78%;
   float: right;
-  width:  193px;
+  margin-top: 50px;
+  padding: 0 0 20px 20px;
+}
+
+img {
+  float: right;
+  width:  200px;
   height: 350px;
   margin: 10px;
   margin-bottom: 50px;
   margin-right: 20%;
 }
 
-#center_doc {
-  position: absolute;
-  width: 80%;
-  max-width: 1200px;
-  min-width: 500px;
-  margin-top: 50px;
-  margin-left: 235px;
-  padding: 0 0 20px 20px;
-}
