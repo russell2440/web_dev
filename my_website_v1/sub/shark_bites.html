@@ -13,17 +13,48 @@
             font-family: 'open sans', serif; background-color: #fff;
         }
 
-        h2 {color: tbd; text-align: center;}
+        h2 {color: #158cc0; text-align: center;}
+
+        @media screen and (max-width: 900px) {h2 {color: #158cc0;}}
+        @media screen and (max-width: 700px) {h2 {color: #8e3131;}}
+        @media screen and (max-width: 600px) {h2 {color: red;}}
+
+        li {list-style-type: none; margin-bottom: 5px; padding-left: 25px;}
+
+        p {margin: 10px;}
 
        #top_div {
-           tbd
+           height: 35px;
+           width: 100%;
+           min-width: 406px;
+           padding-top: 10px;
+           background-color: #158cc0;
+           color: #fff;
        }
+
+       #top_div a {
+           color: #fff;
+           padding: 5px;
+           background-color: #158cc0;
+       }
+
+        #top_div {
+            position: fixed;
+            top: 0px;
+            z-index: 10;
+        }
+
        #container_div {
-           tbd
+           width: 100%;
+           margin-left: auto;
+           margin-right: auto;
        }
        #heading_text_div {
-           tbd
+           text-align: center;
+           margin-top: 50px;
        }
+       #heading_text_div h2 {font-size: 3em;}
+
        #shark_div {
            width: 100%;
            height: 500px;
@@ -38,24 +69,80 @@
             background-attachment: scroll;
             background-size: cover;
        }
+       #shark_semester {
+           position: relative;
+           top: 50%;
+           transform: translateY(-50%);
+           color: #fff;
+           font-family: 'Creepster', cursive;
+           font-size: 9vw;
+           opacity: 0.7;
+           letter-spacing: 20px; /* or use 2vw so fon'ts won't stack. In other words, px forces font stacking. */
+           text-shadow: 2px 2px #000;
+       }
+
+
        #bottom_container_div {
-           tbd
+           width: 80%;
+           margin-left: auto;
+           margin-right: auto;
+           margin-top: 50px;
        }
 
        #left_side_div {
-           tbd
+           float: left;
+           width: 45%;
+           margin-bottom: 20px;
+           padding: 10px;
        }
        #right_side_div {
-           tbd
+           float: right;
+           width: 45%;
+           margin-bottom: 20px;
+           padding: 10px;
        }
+
+       @media screen and (max-width: 712px) {
+           #left_side_div {
+               float: left;
+               width: 95%;
+               padding: 10px;
+           }
+           #right_side_div {
+               width: 95%;
+               padding: 10px;
+               clear: both;
+           }
+       }
+
        #css_table_div {
-           tbd
+           display: table;
+           width: 80%;
+           clear: both;
+           margin-top: 50px;
+           margin-bottom: 50px;
+           margin-left: auto;
+           margin-right: auto;
+           border: 1px dotted rgb(217, 237, 249);
+           background-color: rgba(217, 237, 249, 0.4);
        }
+
        #video_div {
-           tbd
+           width: 100%;
+           margin-left: auto;
+           margin-right: auto;
+           margin-bottom: 15vh;
+           clear: both;
+           text-align: center;
        }
+       video {width: 90%;}
+
        #page_footer_div {
-           tbd
+           width: 100%;
+           height: 40px;
+           margin-left: auto;
+           margin-right: auto;
+           clear: both;
        }
     </style>
 </head>
@@ -96,7 +183,7 @@
 
     <!-- New school multi column -->
     <div id="css_table_div">
-        <div style="tbd">
+        <div style="width: 33%; display: table-cell; vertical-align: top; text-align: left; padding: 10px;">
             <p>New-school two column - ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
             <ol>
                 <li>Shark item 1</li>
@@ -107,12 +194,14 @@
             </ol>
         </div>
 
-        <div style="tbd">
-            tbd
+        <div style="display: table-cell; vertical-align: top; text-align: left; padding: 10px;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
         </div>
 
-        <div style="tbd">
-            tbd
+        <div style="display: table-cell; vertical-align: top; text-align: left; padding: 10px;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
         </div>
     </div>
 
@@ -121,7 +210,7 @@
            <source src="../images/shark-attacks.mp4" type="video/mp4">
            Your browser does not support the video tag.
        </video>
-        <h3 style="tbd"></h3>
+        <h3 style="margin-top: 25px;">Shark owners with their pet tiger sharks - at a local shark park.</h3>
     </div>
 
     <div id="page_footer_div">All Sharks Right's Reserved</div>
