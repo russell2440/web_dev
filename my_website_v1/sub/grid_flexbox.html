@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Grid_Flexbox</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      .container_1 {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+        background-color: orange;
+      }
+      .container_1 div{
+        background-color: #f1f1f1;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+        font-size: 3em;
+      }
+
+
+
+      .container_2 {
+        display: grid;
+        grid-template-areas:
+          "header header"
+          "menu content"
+          "footer footer";
+        grid-template-columns: 1fr 3fr;
+        padding: 5px;
+        gap: 3px;
+        background-color: orange;
+      }
+      .container_2 div {
+        padding: 10px;
+        background-color: white;
+      }
+      .container_2 div.header {
+        grid-area: header;
+        text-align: center;
+      }
+      .container_2 div.menu {
+        grid-area: menu;
+      }
+      .container_2 div.content {
+        grid-area: content;
+      }
+      .container_2 div.footer {
+        grid-area: footer;
+        text-align: center;
+      }
+    </style>
+</head>
+
+<body>
+
+  <h1>CSS Simple Grid Layout</h1>
+
+  <p>Direct child elements of the grid container automatically become grid items.</p>
+
+  <div class="container_1">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+
+  <hr>
+
+  <h1>CSS Grid Layout</h1>
+  <p>The Grid Layout Module offers a grid-based layout system, with rows and columns</p>
+  <p>The Grid Layout Module makes it easy to design complex and responsive web pages without using floats and positioning: </p>
+
+  <div class="container_2">
+    <div class="header"><h2>My Header</h2></div>
+    <div class="menu">
+      <a href="#">Link 1</a><br>
+      <a href="#">Link 2</a><br>
+      <a href="#">Link 3</a><br>
+      <a href="#">Link 4</a><br>
+    </div>
+    <div class="content">
+      <h3>Lorem Ipsum</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a neque augue. Vestibulum sem urna, tristique vel lobortis at, venenatis eget eros. Curabitur sit amet accumsan felis. Cras nec nibh arcu. Mauris lacinia lectus a suscipit mollis. Etiam auctor bibendum sem, eget convallis massa aliquam sit amet. Nam vel egestas justo. Aenean lacinia dictum enim in volutpat. Sed sit amet enim in quam tincidunt commodo eu in dui. Suspendisse nisl nisl, ullamcorper id lectus ac, placerat varius eros. Phasellus commodo leo lacus, at venenatis nibh consequat vel. Morbi eleifend at neque ac sagittis. Donec diam velit, interdum nec scelerisque a, ultricies a ante. In sit amet metus in nibh varius consequat sit amet quis elit. Aliquam id nunc vitae tellus auctor eleifend a at elit.</p>
+    </div>
+    <div class="footer">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
+  <br>
+
+</body>
+</html>
