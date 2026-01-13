@@ -7,13 +7,13 @@
 
     <style>
         /* The css simple grid layout container */
-      .container_1 {
+      .simple_grid_container {
         display: grid;
         grid-template-columns: auto auto auto;
         padding: 10px;
         background-color: orange;
       }
-      .container_1 div{
+      .simple_grid_container div{
         background-color: #f1f1f1;
         border: 1px solid black;
         padding: 10px;
@@ -24,7 +24,7 @@
 
 
         /* The css grid layout container */
-      .container_2 {
+      .complex_grid_container {
         display: grid;
         grid-template-areas:
           "header header"
@@ -35,26 +35,26 @@
         gap: 3px;
         background-color: orange;
       }
-      .container_2 div {
+      .complex_grid_container div {
         padding: 10px;
         background-color: white;
       }
-      .container_2 div.header {
+      .complex_grid_container div.header {
         grid-area: header;
         text-align: center;
       }
-      .container_2 div.menu {
+      .complex_grid_container div.menu {
         grid-area: menu;
       }
-      .container_2 div.content {
+      .complex_grid_container div.content {
         grid-area: content;
       }
-      .container_2 div.footer {
+      .complex_grid_container div.footer {
         grid-area: footer;
         text-align: center;
       }
 
-        /* The css grid layout container */
+        /* The css flexbox layout container */
       .flexbox_container {
           display: flex;
           flex-direction: column;
@@ -69,8 +69,8 @@
           background-color: white;
       }
 
-        /* The css grid layout container */
-      .grid_container {
+        /* The css grid flexbox layout container */
+      .grid_flexbox_container {
         display: grid;
         grid-template-areas:
           "header header"
@@ -81,35 +81,33 @@
         gap: 3px;
         background-color: orange;
       }
-      .grid_container div {
+      .grid_flexbox_container div {
         padding: 10px;
         background-color: white;
       }
-      .grid_container div.header {
+      .grid_flexbox_container div.header {
         grid-area: header;
         text-align: center;
       }
-
       /* Flexbox Menu Start */
-      .grid_container div.menu {
+      .grid_flexbox_container div.menu {
         grid-area: menu;
         display: flex;
         flex-direction: column;
         gap: 10px;
         background-color: orange;
       }
-      .grid_container div.menu a {
+      .grid_flexbox_container div.menu a {
           text-decoration: none;
           color: blue;
           font-weight: bold;
         background-color: white;
       }
       /* Flexbox Menu End */
-
-      .grid_container div.content {
+      .grid_flexbox_container div.content {
         grid-area: content;
       }
-      .grid_container div.footer {
+      .grid_flexbox_container div.footer {
         grid-area: footer;
         text-align: center;
       }
@@ -123,7 +121,7 @@
 
   <p>Direct child elements of the grid container automatically become grid items.</p>
 
-  <div class="container_1">
+  <div class="simple_grid_container">
     <div>1</div>
     <div>2</div>
     <div>3</div>
@@ -138,7 +136,7 @@
   <p>The Grid Layout Module offers a grid-based layout system, with rows and columns</p>
   <p>The Grid Layout Module makes it easy to design complex and responsive web pages without using floats and positioning: </p>
 
-  <div class="container_2">
+  <div class="complex_grid_container">
     <div class="header"><h2>My Header</h2></div>
     <div class="menu">
       <a href="#">Link 1</a><br>
@@ -174,7 +172,7 @@
   <h1>CSS Grid-Flexbox Layout</h1>
   <p>The containter uses <b>Grid</b> for the page structure, while the menu uses <b>Flexbox</b> for the menu links.</p>
 
-  <div class="grid_container">
+  <div class="grid_flexbox_container">
     <div class="header"><h2>My Header</h2></div>
     <div class="menu">
       <a href="#">Link 1</a><br>
