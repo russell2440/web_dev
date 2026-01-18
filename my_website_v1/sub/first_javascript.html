@@ -1,0 +1,39 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+    <head>
+        <title>First Javascript Example</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+        </style>
+
+        <script>
+            function on_click_eh(message){
+                alert("The On Click eh..."+message);
+                prompt("Please enter your name....",message);
+            };
+
+            function on_mouse_over_eh(){
+                alert("The On Mouse Over eh...");
+            };
+
+            function on_load_eh(){
+                alert("The On Load eh..." + new Date());
+            };
+        </script>
+    </head>
+
+    <body onload="on_load_eh()">
+        <h1>Welcome Uber Nerdlings!</h1>
+
+        <button id="butt" type="button" onclick="on_click_eh('from_button')">Press Me...</button>
+
+        <p onmouseover="on_mouse_over_eh()">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
+
+        <p onclick="on_click_eh('from second p')">Morbi non elit consequat ipsum ornare viverra at ut magna. Donec sodales nisi sed leo facilisis placerat. Fusce nec efficitur urna. Cras sit amet erat nulla. Donec et efficitur ante, quis feugiat ligula. Morbi aliquet mi quis turpis cursus, posuere mattis nunc tempus. Ut euismod tellus nec gravida cursus. Maecenas eget hendrerit sapien, sed bibendum turpis.</p>
+    </body>
+
+</html>
