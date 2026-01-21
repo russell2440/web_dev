@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" onkeypress="the_eh('html onkeypress event')">
+<html lang="en" onkeypress="sniffer('html onkeypress event')">
 
     <head>
         <title>Second Javascript Example</title>
@@ -11,8 +11,8 @@
         </style>
 
         <script>
-            function the_eh(message){
-                alert(message);
+            function sniffer(message){
+                console.log("sniffer caught event: " + message);
             }
         </script>
 
@@ -23,14 +23,15 @@
 
     </head>
 
-    <body onload="the_eh('body onload event')" onresize="the_eh('body onresize event')">
+    <body onload="sniffer('body onload event')" onresize="sniffer('body onresize event')">
         <h1>Welcome Uber Nerdlings!</h1>
 
-        <button id="butt" type="button" onclick="the_eh('button onclick event')">Press Me...</button>
+        <input type="text" onchange="alert('Text input changed')">
+        <button id="butt" type="button" onclick="sniffer('button onclick event')">Press Me...</button>
 
-        <p onclick="the_eh('first p onclick event')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
+        <p onclick="sniffer('first p onclick event')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
 
-        <p id="second_p" onmouseover="the_eh('second p onmouseover event')">Morbi non elit consequat ipsum ornare viverra at ut magna. Donec sodales nisi sed leo facilisis placerat. Fusce nec efficitur urna. Cras sit amet erat nulla. Donec et efficitur ante, quis feugiat ligula. Morbi aliquet mi quis turpis cursus, posuere mattis nunc tempus. Ut euismod tellus nec gravida cursus. Maecenas eget hendrerit sapien, sed bibendum turpis.</p>
+        <p id="second_p" onmouseover="sniffer('second p onmouseover event')">Morbi non elit consequat ipsum ornare viverra at ut magna. Donec sodales nisi sed leo facilisis placerat. Fusce nec efficitur urna. Cras sit amet erat nulla. Donec et efficitur ante, quis feugiat ligula. Morbi aliquet mi quis turpis cursus, posuere mattis nunc tempus. Ut euismod tellus nec gravida cursus. Maecenas eget hendrerit sapien, sed bibendum turpis.</p>
     </body>
 
 </html>

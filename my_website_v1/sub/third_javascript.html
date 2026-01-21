@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html id="ht" lang="en">
+    <head>
+        <title>Third Javascript Example</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script>
+            function sniffer(message){
+                console.log("sniffer caught event: " + message);
+            }
+        </script>
+
+        <style>
+            #second_p {width: 200px; background-color: teal;}
+            p:hover, button:hover {cursor: pointer;}
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Welcome Uber Nerdlings!</h1>
+
+        <input id="input" type="text">
+
+        <button id="butt" type="button">Press Me...</button>
+
+        <p id="first_p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
+
+        <p id="second_p">Morbi non elit consequat ipsum ornare viverra at ut magna. Donec sodales nisi sed leo facilisis placerat. Fusce nec efficitur urna. Cras sit amet erat nulla. Donec et efficitur ante, quis feugiat ligula. Morbi aliquet mi quis turpis cursus, posuere mattis nunc tempus. Ut euismod tellus nec gravida cursus. Maecenas eget hendrerit sapien, sed bibendum turpis.</p>
+
+        <script>
+            document.getElementById("ht").onkeypress =function(){
+                sniffer('html onkeypress event');
+            }
+            document.body.onload=function(){
+                sniffer('body onload event');
+            }
+            document.body.onresize =function(){
+                sniffer('body onresize event');
+            }
+            document.getElementById("input").onchange=function(){
+                alert('input onchange event');
+                sniffer('input onchange event');
+            }
+            document.getElementById("butt").onclick=function(){
+                sniffer('butt onclick event');
+            }
+            document.getElementById("first_p").onclick=function(){
+                sniffer('first_p onclick event');
+            }
+            document.getElementById("second_p").onmouseover=function(){
+                sniffer('second_p onmouseover event');
+            }
+        </script>
+    </body>
+
+</html>
