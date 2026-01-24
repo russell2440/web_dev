@@ -56,6 +56,22 @@
                 const parsed_val = parseInt(input_val);
                 console.log("parsed_val: " + parsed_val);
             }
+
+            /*
+            Properties are the values associated with JS objects.
+            'innerHTML is a property that is the HTML content of
+            an element.
+            */
+            document.getElementById("butt").onclick=function(){
+                alert('button click event');
+                console.log('button click event');
+
+                var element = document.getElementById("second_p");
+                console.log("value: " + element.innerHTML);
+
+                element.innerHTML = "Hey Hugo Stiglitz!"
+                console.log("value: " + element.innerHTML);
+            }
         </script>
     </body>
 
