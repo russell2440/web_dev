@@ -18,9 +18,10 @@
     <body>
         <h1>Welcome Uber Nerdlings!</h1>
 
-        <input type="text" id="input">
+        <input id="input" type="text">
 
-        <button id="butt" type="button">Press Me...</button>
+        <input id="p_2_change" type="button" value="p_2_change">
+        <input id="p_1_change" type="button" value="p_1_change">
 
         <p id="first_p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
 
@@ -61,9 +62,10 @@
             Properties are the values associated with JS objects.
             'innerHTML is a property that is the HTML content of
             an element.
+            Change the second p innerHTML property value.
             */
-            document.getElementById("butt").onclick=function(){
-                alert('button click event');
+            document.getElementById("p_2_change").onclick=function(){
+                alert('p_2_change button click event');
                 console.log('button click event');
 
                 var element = document.getElementById("second_p");
@@ -71,6 +73,33 @@
 
                 element.innerHTML = "Hey Hugo Stiglitz!"
                 console.log("value: " + element.innerHTML);
+            }
+
+            /*
+            Properties are the values associated with JS objects.
+            'innerHTML is a property that is the HTML content of
+            an element.
+            Change the first p innerHTML property value.
+            Change it within a loop, displaying the loop value in
+            each loop iteration.
+            */
+            document.getElementById("p_1_change").onclick=function(){
+                alert('p_1_change button click event');
+                console.log('button click event');
+
+                var element = document.getElementById("first_p");
+                element.innerHTML = "<br>" + element.innerHTML;
+                for(i = 10; i >= 0; i--) {
+                    element.innerHTML =
+                        "loop_count: " + i + "<br>" + element.innerHTML;
+                    console.log("loop_count: " + i);
+                }
+                console.log("loop_count: done");
+
+
+                this.value = 'Done Looping!';
+                this.style.color = 'red';
+                this.style.fontSize = '34px';
             }
         </script>
     </body>
