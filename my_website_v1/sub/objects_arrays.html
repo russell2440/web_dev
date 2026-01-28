@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html id="ht" lang="en">
+    <head>
+        <title>Objects and Arrays JS Example</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            #second_p {
+                width: 200px;
+                background-color: teal;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Welcome Uber Nerdlings!</h1>
+
+        <input id="input" type="text">
+
+        <input id="p_2_change" type="button" value="p_2_change">
+        <input id="p_1_change" type="button" value="p_1_change">
+
+        <p id="first_p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget purus at magna ultrices sodales. Quisque egestas consectetur diam, non vehicula orci vestibulum in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum placerat turpis, in maximus nulla convallis vel. Vivamus elit justo, suscipit quis semper nec, suscipit ac urna. Fusce ut sapien elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et ullamcorper nisl. Curabitur id fringilla enim. Nullam suscipit molestie lacus, eu suscipit massa venenatis ac. Nulla malesuada vel felis non vehicula.</p>
+
+        <p id="second_p">Morbi non elit consequat ipsum ornare viverra at ut magna. Donec sodales nisi sed leo facilisis placerat. Fusce nec efficitur urna. Cras sit amet erat nulla. Donec et efficitur ante, quis feugiat ligula. Morbi aliquet mi quis turpis cursus, posuere mattis nunc tempus. Ut euismod tellus nec gravida cursus. Maecenas eget hendrerit sapien, sed bibendum turpis.</p>
+
+        <script type="text/javascript">
+            /* https://www.w3schools.com/jsref/default.asp */
+            var email = "russ85226@gmail.com";
+
+            var the_at = email.indexOf(".com");
+            console.log(the_at);
+            the_at = "russ85226@gmail.com".indexOf("com");
+            console.log(the_at);
+
+            /*
+            A couple of JS's Global Functions:
+            isNan() - determines whether a value is a number.
+            parseInit() - parses a string and returns a number.
+            */
+            document.getElementById("input").onchange=function(){
+                alert('input onchange event');
+                console.log("Event caught: input onchange event");
+
+                const input_val = document.getElementById("input").value;
+                console.log("input_val: " + input_val);
+
+                if (isNaN(input_val) == true) {
+                    console.log("input_val: IS NOT a number");
+                } else {
+                    console.log("input_val: IS a number");
+                }
+
+                const parsed_val = parseInt(input_val);
+                console.log("parsed_val: " + parsed_val);
+            }
+
+            /*
+            Properties are the values associated with JS objects.
+            'innerHTML is a property that is the HTML content of
+            an element.
+            Change the second p innerHTML property value.
+            */
+            document.getElementById("p_2_change").onclick=function(){
+                alert('p_2_change button click event');
+                console.log('button click event');
+
+                var element = document.getElementById("second_p");
+                console.log("value: " + element.innerHTML);
+
+                element.innerHTML = "Hey Hugo Stiglitz!"
+                console.log("value: " + element.innerHTML);
+            }
+
+            /*
+            Properties are the values associated with JS objects.
+            'innerHTML is a property that is the HTML content of
+            an element.
+            Change the first p innerHTML property value.
+            Change it within a loop, displaying the loop value in
+            each loop iteration.
+            */
+            document.getElementById("p_1_change").onclick=function(){
+                alert('p_1_change button click event');
+
+                console.log('button click event');
+
+
+
+                var array_1 = [];
+
+                for(i = 10; i >= 0; i--) {
+                    array_1.push("loop_count_" + i);
+                }
+                var array_2 = array_1.slice();
+                array_2.sort();
+
+                var pop_dogs_1 = [
+                    "French Bulldog",
+                    "Labrador Retrieve",
+                    "Golden Retrieve",
+                    "German Shepherd Dog",
+                    "Poodle",
+                ];
+
+
+                var pop_dogs_2 = [
+                    "Beagle",
+                    "Rottweiler",
+                    "Bulldog",
+                    "German Shorthaired Pointer",
+                    "Dachshund.",
+                ];
+
+                array_1[3] = pop_dogs_1;
+                array_2[7] = pop_dogs_2;
+
+
+
+                console.log("array_1: " + array_1.length);
+                for (i = 0; i < array_1.length; i++) {
+                    console.log(array_1[i]);
+                }
+
+                console.log("array_2: " + array_2.length);
+                for (i = 0; i < array_2.length; i++) {
+                    console.log(array_2[i]);
+                }
+
+                console.log("loop_count: done");
+
+
+                var element = document.getElementById("first_p");
+
+                element.innerHTML = element.innerHTML + "<br>";
+                element.innerHTML = element.innerHTML + "<br>";
+                element.innerHTML = element.innerHTML + "array_1: " + array_1.length + "<br>";
+                for (i = 0; i < array_1.length; i++) {
+                    element.innerHTML = element.innerHTML + '(' + array_1[i] + ')' + "  ";
+                }
+
+                element.innerHTML = element.innerHTML + "<br>";
+                element.innerHTML = element.innerHTML + "<br>";
+                element.innerHTML = element.innerHTML + "array_2: " + array_2.length + "<br>";
+                for (i = 0; i < array_2.length; i++) {
+                    element.innerHTML = element.innerHTML + '(' + array_2[i] + ')' + "  ";
+                }
+
+                element.innerHTML = element.innerHTML + "<br>";
+                element.innerHTML = element.innerHTML + "<br>";
+
+
+                this.value = 'Done Looping!';
+                this.style.color = 'red';
+                this.style.fontSize = '34px';
+            }
+        </script>
+    </body>
+
+</html>
