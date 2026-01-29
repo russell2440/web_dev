@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html id="ht" lang="en">
+    <head>
+        <title>More Functions JS Example</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            #second_p {
+                width: 200px;
+                background-color: teal;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Welcome Uber Nerdlings!</h1>
+
+        <input id="input" type="text">
+
+        <br>
+
+        <input type="button" id="left_button" value="Left Button">
+        <input type="button" id="right_button" value="Right Button">
+
+        <script type="text/javascript">
+            /* https://www.w3schools.com/jsref/default.asp */
+            var email = "russ85226@gmail.com";
+
+            var the_at = email.indexOf(".com");
+            console.log(the_at);
+            the_at = "russ85226@gmail.com".indexOf("com");
+            console.log(the_at);
+
+            /*
+            Test a couple of JS's Global Functions:
+            isNan() - determines whether a value is a number.
+            parseInit() - parses a string and returns a number.
+            */
+            document.getElementById("input").onchange=function(){
+                alert('input onchange event');
+                console.log("Event caught: input onchange event");
+
+                const input_val = document.getElementById("input").value;
+                console.log("input_val: " + input_val);
+
+                if (isNaN(input_val) == true) {
+                    console.log("input_val: IS NOT a number");
+                } else {
+                    console.log("input_val: IS a number");
+                }
+
+                const parsed_val = parseInt(input_val);
+                console.log("parsed_val: " + parsed_val);
+            }
+
+
+            /*
+            Test the id of an element passed as a parameter
+            to a function. The function updates the element's
+            value. The element is the left button.
+            */
+            function update_button_via_id(element_id) {
+                element = document.getElementById(element_id);
+                element.value = element.value + ": updated";
+                console.log("value: " + element.value);
+            }
+
+            document.getElementById("left_button").onclick=function(){
+                console.log('left button click event');
+
+                console.log("value: " + this.value);
+                update_button_via_id(this.id);
+                console.log("value: " + this.value);
+            }
+
+            /*
+            Test the element passed as a parameter via 'this'
+            to a function. The function updates the element's
+            value. The element is the left button.
+            */
+            function update_button_via_element(element) {
+                element.value = element.value + ": updated";
+                console.log("value: " + element.value);
+            }
+
+            document.getElementById("right_button").onclick=function(){
+                console.log('right button click event');
+
+                console.log("value: " + this.value);
+                update_button_via_element(this);
+                console.log("value: " + this.value);
+            }
+
+        </script>
+    </body>
+
+</html>
