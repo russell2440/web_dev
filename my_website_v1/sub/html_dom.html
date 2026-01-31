@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html id="ht" lang="en">
+    <head>
+        <title>HTML DOM JS Example</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            div {
+                position: relative;
+            }
+
+            h1 {
+                margin: 25px auto;
+                width: 100%;
+                text-align: center;
+                font-size: 24px;
+                font-family: sans-serif;
+                color: #fff;
+                background-color: #e84b0d;
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="div_id">
+            <h1>The HDML DOM</h1>
+            <input type="button" id="left_button" value="Left Button">
+            <input type="button" id="right_button" value="Right Button">
+
+            <p id="p_id"></p>
+        </div>
+
+        <script type="text/javascript">
+            /* https://www.w3schools.com/jsref/default.asp */
+            var email = "russ85226@gmail.com";
+
+            var the_at = email.indexOf(".com");
+            console.log(the_at);
+            the_at = "russ85226@gmail.com".indexOf("com");
+            console.log(the_at);
+
+            document.getElementById("left_button").onclick=function(){
+                document.open();
+                document.write("<h2>Hello World!</h2>");
+                document.write("<input type='button' id='right_button' value='Right Button'>");
+                document.close();
+
+                console.log('left button click event');
+            }
+
+            /* DOM Manipulation Methods */
+            document.getElementById("right_button").onclick=function(){
+                /* step 1: create a p tag, 2) add text to it. */
+                var p_elem = document.createElement("p");
+                var text_node = document.createTextNode("The new text");
+                p_elem.appendChild(text_node);
+
+                /* step 3: add the new <p> tag to the <div>. */
+                var div_elem = document.getElementById("div_id");
+                div_elem.appendChild(p_elem);
+
+                console.log('right button click event');
+                console.log(div_elem.innerHTML);
+            }
+
+        </script>
+    </body>
+
+</html>
