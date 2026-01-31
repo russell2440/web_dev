@@ -28,10 +28,8 @@
     <body>
         <div id="div_id">
             <h1>The HDML DOM</h1>
-            <input type="button" id="left_button" value="Left Button">
-            <input type="button" id="right_button" value="Right Button">
-
-            <p id="p_id"></p>
+            <input type="button" id="left_button" value="Write method">
+            <input type="button" id="right_button" value="DOM methods">
         </div>
 
         <script type="text/javascript">
@@ -43,6 +41,7 @@
             the_at = "russ85226@gmail.com".indexOf("com");
             console.log(the_at);
 
+            /* Document Write method */
             document.getElementById("left_button").onclick=function(){
                 document.open();
                 document.write("<h2>Hello World!</h2>");
@@ -52,16 +51,16 @@
                 console.log('left button click event');
             }
 
-            /* DOM Manipulation Methods */
+            /* DOM Manipulation methods */
             document.getElementById("right_button").onclick=function(){
                 /* step 1: create a p tag, 2) add text to it. */
-                var p_elem = document.createElement("p");
+                var h2_elem = document.createElement("h2");
                 var text_node = document.createTextNode("The new text");
-                p_elem.appendChild(text_node);
+                h2_elem.appendChild(text_node);
 
                 /* step 3: add the new <p> tag to the <div>. */
                 var div_elem = document.getElementById("div_id");
-                div_elem.appendChild(p_elem);
+                div_elem.appendChild(h2_elem);
 
                 console.log('right button click event');
                 console.log(div_elem.innerHTML);
