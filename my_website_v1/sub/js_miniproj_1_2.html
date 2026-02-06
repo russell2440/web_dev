@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html id="ht" lang="en">
+
+<head>
+    <title>HTML JS Mini Project 1 and 2</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+        main {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        #editable_element {
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            margin-top:
+                10px;
+            margin-bottom:
+                10px;
+            padding: 10px;
+            background-color: #dfe4df;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px dashed black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <h2>HTML Content Editable with JS</h2>
+        <button onclick="start_edit()">Start Editing</button>
+        <button onclick="stop_edit()">Finish Editing</button>
+        <p id="editable_element"></p>
+        <br>
+        <br>
+        <h2>HTML Drawing on Canvas with JS</h2>
+        <canvas id="white_board" width="400" height="400"></canvas>
+    </main>
+
+    <script type="text/javascript">
+        // Make the element editable.
+        function start_edit() {
+            var elem = document.getElementById("editable_element");
+
+            elem.contentEditable = true;
+            elem.focus();
+        }
+
+        // Return the element to normal.
+        function stop_edit() {
+            var elem = document.getElementById("editable_element");
+
+            elem.contentEditable = false;
+
+            // Show the markup in a message box.
+            alert("This is what you wrote: \n" + elem.innerHTML);
+        }
+
+        // Perform the canvas draw.
+        document.getElementById("white_board").onclick = function() {
+            console.log("white_board clicked");
+
+            var context = document.getElementById("white_board").getContext("2d");
+
+            // set the line width and color for all the lines.
+            context.lineWidth = 30;
+            context.strokeStyle = "rgb(205, 40, 40)";
+
+            // draw the first line, with the standard butt ending.
+            context.moveTo(20, 50);
+            context.lineTo(400, 50);
+            context.lineCap = "butt";
+            context.stroke();
+
+            // draw the second line, change line color and line width.
+            context.lineWidth = 25;
+            context.strokeStyle = "#95ca91";
+
+            context.beginPath();
+            context.moveTo(25, 120);
+            context.lineTo(400, 120);
+            context.lineCap = "butt";
+            context.stroke();
+        }
+    </script>
+</body>
+
+</html>
