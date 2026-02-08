@@ -26,6 +26,8 @@
         }
 
         canvas {
+            width: 400px;
+            height: 400px;
             display: block;
             margin: 0 auto;
             padding: 10px;
@@ -61,7 +63,7 @@
 
     <main>
         <h2>HTML Drawing on Canvas with JS</h2>
-        <canvas id="white_board" width="400" height="400"></canvas>
+        <canvas id="white_board"></canvas>
         <br>
         <br>
     </main>
@@ -76,7 +78,7 @@
         </div>
         <br>
 
-        <canvas id="dance_floor" width="400" height="400"></canvas>
+        <canvas id="dance_floor"></canvas>
 
         <p id="dance_color"></p>
         <br>
@@ -146,6 +148,9 @@
         //==============================================
         //==============================================
 
+            var canvas = document.getElementById("dance_floor");
+            var context = canvas.getContext("2d");
+
         function get_random_color() {
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';
@@ -158,8 +163,6 @@
         }
 
         function dance_pass() {
-            var canvas = document.getElementById("dance_floor");
-            var context = canvas.getContext("2d");
 
             var vert_pos = Math.floor((Math.random() * 399) + 1);
             var the_color = get_random_color();
@@ -196,6 +199,8 @@
         document.getElementById("dance_stop").onclick = function () {
             clearInterval(animation_handle);
             animation_running = false;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.reset();
         }
 
     </script>
