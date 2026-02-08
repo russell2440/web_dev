@@ -40,14 +40,41 @@
         <h2>HTML Content Editable with JS</h2>
         <button onclick="start_edit()">Start Editing</button>
         <button onclick="stop_edit()">Finish Editing</button>
+
         <p id="editable_element"></p>
         <br>
         <br>
+
+
+
         <h2>HTML Drawing on Canvas with JS</h2>
         <canvas id="white_board" width="400" height="400"></canvas>
+        <br>
+        <br>
+
+
+
+        <h2>HTML Disco Dance with JS</h2>
+        <div id="dance_buttons">
+            <button id="dance_start">Start Dancing!</button>
+            <button id="dance_stop">Stop Dancing!</button>
+        </div>
+        <br>
+
+        <canvas id="dance_floor" width="400" height="400"></canvas>
+
+        <p id="dance_color"></p>
+        <br>
+        <br>
+
     </main>
 
+
+
     <script type="text/javascript">
+
+        //==============================================
+        //==============================================
         // Make the element editable.
         function start_edit() {
             var elem = document.getElementById("editable_element");
@@ -66,11 +93,17 @@
             alert("This is what you wrote: \n" + elem.innerHTML);
         }
 
+
+
+        //==============================================
+        //==============================================
+
         // Perform the canvas draw.
         document.getElementById("white_board").onclick = function() {
             console.log("white_board clicked");
 
-            var context = document.getElementById("white_board").getContext("2d");
+            var context 
+                = document.getElementById("white_board").getContext("2d");
 
             // set the line width and color for all the lines.
             context.lineWidth = 30;
@@ -92,6 +125,70 @@
             context.lineCap = "butt";
             context.stroke();
         }
+
+
+
+        //==============================================
+        //==============================================
+
+        function get_random_color() {
+            console.log("get color");
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]
+            }
+
+            return color;
+        }
+
+        function dance_pass() {
+            console.log("dance_pass!");
+
+            var canvas = document.getElementById("dance_floor");
+            var context = canvas.getContext("2d");
+
+            var vert_pos = Math.floor((Math.random() * 399) + 1);
+            var the_color = get_random_color();
+
+            // set the line width and color for the line.
+            context.lineWidth = 10;
+            context.strokeStyle = the_color;
+
+            // draw the line, with the standard butt ending.
+            context.moveTo(10, vert_pos);
+
+            console.log("vertical pos: " + vert_pos);
+
+            context.lineTo(400, vert_pos);
+            context.lineCap = "butt";
+            context.stroke();
+
+            document.getElementById("dance_color").innerHTML = the_color;
+        }
+
+
+        var animation_running = false;
+        var animation_handle;
+
+        // Start Dancing!
+        document.getElementById("dance_start").onclick = function() {
+            if (false == animation_running) {
+                animation_handle = setInterval(dance_pass, 100);
+                animation_running == true;
+            }
+            else {
+                alert("Animation is already running!");
+            }
+        }
+
+        // Stop Dancing!
+        document.getElementById("dance_stop").onclick = function() {
+            clearInterval(animation_handle);
+            animation_running = false;
+        }
+
     </script>
 </body>
 
