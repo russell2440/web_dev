@@ -176,7 +176,7 @@
         document.getElementById("dance_start").onclick = function() {
             if (false == animation_running) {
                 animation_handle = setInterval(dance_pass, 100);
-                animation_running == true;
+                animation_running = true;
             }
             else {
                 alert("Animation is already running!");
