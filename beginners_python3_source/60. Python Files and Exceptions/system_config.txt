@@ -1,0 +1,6 @@
+Application config file
+
+1. Do this
+2. Do that
+3. Do this and do that.
+4. Do that, that again and then this.
