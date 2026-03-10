@@ -47,11 +47,9 @@ class file_ops:
             with open(file_name, 'r') as file_object:
                 contents = file_object.read()
                 print(contents)
-        except FileNotFoundError:
+        except Exception as e:
             print("\nError: we had trouble reading the file.")
-        except:
-            print("\nError: Unexpected error:", sys.exc_info()[0])
-            raise
+            print(e)
         else:
             print("\nCool: We were able to access the file!")
     
@@ -59,11 +57,9 @@ class file_ops:
         try:
             with open(file_name, 'w') as file_object:
                 file_object.write(text)
-        except FileNotFoundError:
-            print("\nError: we had trouble writing to the file.")
-        except:
-            print("\nError: Unexpected error:", sys.exc_info()[0])
-            raise
+        except Exception as e:
+            print("\nError: we had trouble reading the file.")
+            print(e)
         else:
             print("\nCool: We were able to access the file!")
 
@@ -71,14 +67,11 @@ class file_ops:
         try:
             with open(file_name, 'a') as file_object:
                 file_object.write(text)
-        except FileNotFoundError:
-            print("\nError: we had trouble appending to the file.")
-        except:
-            print("\nError: Unexpected error:", sys.exc_info()[0])
-            raise
+        except Exception as e:
+            print("\nError: we had trouble reading the file.")
+            print(e)
         else:
             print("\nCool: We were able to access the file!")
-
 
 my_file_ops = file_ops()
 print("\n>>> Calling print_file_contents_hardcoded...")
@@ -100,3 +93,87 @@ print("//=======================================================================
 print("//===========================================================================\n")
 
 
+
+#
+# 6. Advanced exceptions / error handling 
+# 7. Reading files line by line
+# 9. Searching files - regular expressions 
+#
+
+def reading_lines():
+    count = 0
+    try:
+        with open('people.txt') as file_object:
+            contents = file_object.readlines()
+            for line in contents:
+                count += 5
+                print("Line #" + str(count) + ":" + line)
+    except Exception as e:
+        print("\nError: we had trouble reading the file.")
+        print(e)
+    else:
+        print("\nCool: We were able to access the file!")
+        print("Total number of lines: "+str(count))
+
+
+
+def reading_lines_with_find():
+    count = 0
+    try:
+        with open('people.txt') as file_object:
+            contents = file_object.readlines()
+            for line in contents:
+                count += 1
+                if line.find('Lucy') == -1:
+                    print("NOPE:    Line #" + str(count) + ":" + line)
+                else:
+                    print("FOUND:   Line #" + str(count) + ":" + line)
+    except Exception as e:
+        print("\nError: we had trouble reading the file.")
+        print(e)
+    else:
+        print("\nCool: We were able to access the file!")
+        print("Total number of lines: "+str(count))
+
+
+
+import re
+def reading_lines_with_regex():
+    count = 0
+    try:
+        with open('people.txt') as file_object:
+            contents = file_object.readlines()
+            for line in contents:
+                count += 1
+                pattern = 'Lucy'
+                if re.search(pattern, line) == None:
+                    print("NOPE:    Line #" + str(count) + ":" + line)
+                else:
+                    print("FOUND:   Line #" + str(count) + ":" + line)
+                if re.search('^'+pattern, line) == None:
+                    print("NOPE:    Line #" + str(count) + ":" + line)
+                else:
+                    print("FOUND:   Line #" + str(count) + ":" + line)
+                if re.search(pattern+'$', line) == None:
+                    print("NOPE:    Line #" + str(count) + ":" + line)
+                else:
+                    print("FOUND:   Line #" + str(count) + ":" + line)
+                print("---")
+    except Exception as e:
+        print("\nError: we had trouble reading the file.")
+        print(e)
+    else:
+        print("\nCool: We were able to access the file!")
+        print("Total number of lines: "+str(count))
+
+print("\n>>> Calling reading_lines...")
+reading_lines()
+print("\n>>> Calling reading_lines_with_find...")
+reading_lines_with_find()
+print("\n>>> Calling reading_lines_with_find...")
+reading_lines_with_find()
+print("\n>>> Calling reading_lines_with_regex...")
+reading_lines_with_regex()
+
+print("//===========================================================================")
+print("//===========================================================================\n")
