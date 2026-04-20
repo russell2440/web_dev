@@ -1,3 +1,13 @@
+<?php
+    // start the session
+    session_start();
+
+
+    function generate_greeting($first = "Russell", $last = "Shahenian") {
+        return "Hello $first $last <br>";
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -170,6 +180,92 @@
        <br>
 
 
+       <h1>Ch8 - PHP Functions</h1>
+            <?php
+            // 1. PHP Functions - 1
+            $message = strlen("Welcome to the party pal!");
+            echo $message;
+            echo "<br>";
+
+            // 2. PHP Functions - 2
+            $message = date("y-m-d");
+            echo $message;
+            echo "<br>";
+
+            $message = scandir("../php_lessons");
+            echo print_r ($message);
+            echo "<br>";
+            ?>
+
+
+       <h1>Ch9 - PHP Loops</h1>
+            <?php
+            // For loop
+            for ($i = 0; $i < 10; $i++) {
+                echo "The value of i is $i<br>";
+            }
+            echo "<br>";
+
+            // While loop
+            $x = 0;
+            while ($x < 10) {
+                echo "The value of x is $x<br>";
+                $x++;
+            }
+            echo "<br>";
+
+            // Foreach loop - just for arrays
+            $albums = array("Houses of the Holy", "Dark Side Of the Moom", "2112");
+            foreach ($albums as $album) {
+                echo "The album is $album<br>";
+            }
+            echo "<br>";
+            ?>
+
+
+       <h1>Ch10 - Custom Functions</h1>
+            <?php
+            function generate_greeting_2($first = "Russell", $last = "Shahenian") {
+                return "Hello $first $last <br>";
+            }
+            echo generate_greeting();
+            echo generate_greeting("John", "Bigbooty");
+            echo generate_greeting_2("Neil", "Armstrong");
+            echo "<br>";
+            ?>
+
+
+        <h1>Ch11 - PHP Sessions</h1>
+            <h2>PHP Sessions allow you to keep track of users</h2>
+            <?php
+            // 1. PHP Sessions - 1
+            // 2. PHP Sessions - 2
+            // 3. PHP Sessions - 3
+            echo "The session id is " . session_id() . "<br>";
+            // set session variables
+            $_SESSION['first_name'] = "Russell";
+            $_SESSION['last_name'] = "Shahenian";
+            echo "The session variables are set<br>"
+            // unset a session variable
+            //unset($_SESSION['username']);
+            ?>
+            <h2>Session variables created, now let's see what we have</h2>
+            <?php
+                // Echo out the session variables
+                echo "The session variables are: <br>";
+                echo "First name is " . $_SESSION['first_name'] . "<br>";
+                echo "Second name is " . $_SESSION['last_name'] . "<br>";
+            ?>
+            <h2>View session with print_r($_SESSION)</h2>
+            <?php
+                // print out all the session variables
+                print_r($_SESSION);
+                echo "<br>";
+            ?>
+            <h2>View session within brower via another tab</h2>
+            <a href="http://localhost:8888/php_session_helper.php">View Session</a>
+       <br>
+       <br>
 
 
 
