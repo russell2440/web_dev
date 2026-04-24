@@ -246,9 +246,8 @@
             $_SESSION['first_name'] = "Russell";
             $_SESSION['last_name'] = "Shahenian";
             echo "The session variables are set<br>"
-            // unset a session variable
-            //unset($_SESSION['username']);
             ?>
+
             <h2>Session variables created, now let's see what we have</h2>
             <?php
                 // Echo out the session variables
@@ -256,14 +255,39 @@
                 echo "First name is " . $_SESSION['first_name'] . "<br>";
                 echo "Second name is " . $_SESSION['last_name'] . "<br>";
             ?>
+
             <h2>View session with print_r($_SESSION)</h2>
             <?php
                 // print out all the session variables
                 print_r($_SESSION);
                 echo "<br>";
             ?>
+
+            <h2>Reset session variables and view print_r($_SESSION)</h2>
+            <?php
+                // print out all the session variables
+                $_SESSION['first_name'] = "Harvey";
+                $_SESSION['last_name'] = "Mudd";
+                print_r($_SESSION);
+                echo "<br>";
+            ?>
             <h2>View session within brower via another tab</h2>
             <a href="http://localhost:8888/php_session_helper.php">View Session</a>
+
+            <h2>Destroy session and view print_r($_SESSION)</h2>
+            <?php
+                // remove all session variables
+                //session_unset();
+                echo "The session variables are unset<br>";
+                // print out all the session variables
+                print_r($_SESSION);
+                echo "<br>";
+                // destroy the session
+                //session_destroy();
+                echo "The session has been destroyed<br>";
+                // print out all the session variables
+                print_r($_SESSION);
+            ?>
        <br>
        <br>
 
