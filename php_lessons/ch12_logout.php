@@ -12,7 +12,6 @@ session_destroy();
 
 <!DOCTYPE html>
 <html>
-
     <title>ch12 - form processing - logout page.</title>
     <link href='http://fonts.googleapis.com/css?family=Calligraffiti' rel='stylesheet' type='text/css'>
     <link href='ch12_styles.css' rel='stylesheet' type='text/css'>

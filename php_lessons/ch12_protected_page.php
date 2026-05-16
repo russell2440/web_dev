@@ -1,17 +1,17 @@
 <?php
-// Start the session
-session_start();
+    // Start the session
+    session_start();
 
-// this could have code put into an include so you could password protect any page
-// you want.
+    // This could have code put into an include so you could password protect any page
+    // you want.
 
-// Check session to see if they logged in:
-
-if (isset($is_logged_in)) {
+    // Check session to see if they logged in:
+    if (! isset($_SESSION['is_logged_in'])) {
+        // The user is NOT logged in, redirect them to the login page immediately
+        header('Location: ch12_login.php?is_blocked=true');
+        exit;
+    }
     // do nothing, the user logged in.
-} else {
-    header('Location: ch12_login.php?is_blocked=true');
-}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ if (isset($is_logged_in)) {
         </nav>
 
         <main>
-            <p>You are new viewing members only content! Aren't you special!</p>
+            <p>You are now viewing members only content! Aren't you special!</p>
         </main>
     </body>
 </html>

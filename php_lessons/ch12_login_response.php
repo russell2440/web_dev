@@ -1,7 +1,7 @@
 
 <?php
-// Start the session
-session_start();
+    // Start the session
+    session_start();
 
     /* Checking that they put in the correct username...
      * In the real world we would be checking both the username and password
@@ -9,13 +9,12 @@ session_start();
      * passwords.
      */
     
-    $username = $_POST["username"];
     
-    if (trim($username == "Harcord")) {
-        $_SESSION["is_loggined_in"] = true;
+    if ($_POST['username'] == 'Harcord') {
+        $_SESSION['is_logged_in'] = true;
         header('Location: ch12_protected_page.php');
     } else {
-        header('Location: ch12_login.php?bad_user_credentionals=true');
+        header('Location: ch12_login.php?bad_user_credentials=true');
     }
 
 ?>

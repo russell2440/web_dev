@@ -1,7 +1,6 @@
 <?php
-// Start the session
-session_start();
-
+    // Start the session
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +25,10 @@ session_start();
             <?php
                 if (isset($_SESSION["is_logged_in"])) {
                     // The user is already logged in, so don't show the form!
-                    echo "You are already logged in buddy!</p>";
+                    echo "<p>You are already logged in buddy!</p>";
                 } else {
                     // using Heredoc, to echo out the form.
                     $the_form = <<<THEFORM
-
                     <p>Welome to WheatBook!</p>
                     <h2>Please enter your username and password to log in:</h2>
 
@@ -39,7 +37,6 @@ session_start();
                         <input type='password' name='password'>
                         <input type='submit'>
                     </form>
-
                     THEFORM;
 
                     echo $the_form;
@@ -47,15 +44,15 @@ session_start();
             ?>
 
             <?php
+                // var_dump($_SESSION); echo "<br>";
+                // var_dump($_GET); echo "<br>";
                 // parse the query string for message sent to this page.
-                $is_block = $_GET["is_block"];
-                $bad_user_credentials = $_GET["bad_user_credentials"];
 
-                if (isset($is_block)) {
+                if (isset($_GET['is_blocked'])) {
                     echo "<h2>Ah, ah, ahhhhh ... you need to log in buddy!</h2>";
                     echo "<script>document.getElementById('username').focus();</script>";
-                } else if ($bad_user_credentials) {
-                    echo "<h2>user name OR password is wrong buddy!</h2>";
+                } else if (isset($_GET['bad_user_credentials'])) {
+                    echo "<h2>Username OR password is wrong buddy!</h2>";
                     echo "<script>document.getElementById('username').focus();</script>";
                 }
             ?>
