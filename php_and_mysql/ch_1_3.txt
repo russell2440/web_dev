@@ -1,0 +1,7 @@
+
+insert into people(name, id) values ('some_name', 7);
+update people set name = 'some_other_name' where id = 7;
+select name from people where 1;
+select * from people where 1;
+select name, id from people where name != 'Andrew';
+
