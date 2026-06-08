@@ -27,6 +27,23 @@ echo '<br>';
 echo 'Host information: '.$conn->host_info;
 echo '<br>';
 echo 'Protocol version: '.$conn->protocol_version;
+echo '<br>';
+
+$sql = "select * from products where product_id = 344";
+$sql = "select * from products where 1";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    echo "<h2 style='color: green'>$result->num_rows records found</h2>";
+    while($row = $result->fetch_assoc()) {
+        echo 'id: '.$row['id'].' - prod id: '.$row['product_id'].' - prod price: '.$row['product_price'];
+        echo '<br>';
+    }
+    echo '<br>';
+}
+else {
+    echo "<h2 style='color: red'>No records found</h2>";
+    echo '<br>';
+}
 
 $conn->close();
 ?>
