@@ -3,8 +3,8 @@
     <head>
         <title>Form Validation Example</title>
         <meta tbd>        
-        <script type="text/javascript" src="jquery.js"></script>
-        <script type="text/javascript" src="validate.js"></script>
+        <script type="text/javascript" src="xjquery.js"></script>
+        <script type="text/javascript" src="xvalidate.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function(){
@@ -38,19 +38,19 @@
         <form action="" method="post" id="form">
             <fieldset>
                 <label for="name">Name: <em>*</em></label>
-                <input type="text" name="name" id="name" class="required">
+                <input type="text" name="name" id="name" class="required" value="<?php echo $form['name']; ?>"> <?php $error['name'] ?>
 
                 <label for="phone">Phone (000-000-0000): <em>*</em></label>
-                <input type="text" name="phone" id="phone" class="required phoneUS">
+                <input type="text" name="phone" id="phone" class="required phoneUS" value="<?php echo $form['phone']; ?>"> <?php $error['phone'] ?>
 
                 <label for="fax">Fax (000-000-0000): </label>
-                <input type="text" name="fax" id="fax">
+                <input type="text" name="fax" id="fax" value="<?php echo $form['fax']; ?>">
 
                 <label for="email">Email: <em>*</em></label>
-                <input type="text" name="email" id="email" class="required email">
+                <input type="text" name="email" id="email" class="required email" value="<?php echo $form['email']; ?>"> <?php $error['email'] ?>
 
                 <label for="comments">Comments: </label>
-                <textarea name="comments" id="comments"></textarea>
+                <textarea name="comments" id="comments"><?php echo $form['email']; ?></textarea>
 
                 <p class="required_msg">* required fields</p>
 
