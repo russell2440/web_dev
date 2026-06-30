@@ -40,6 +40,19 @@ if (isset($_POST['submit']))
             $error['email'] = $error_open . "Please fill in all required fields!" . $error_close;
             $valid_form = FALSE;
         }
+
+        // check formatting
+        $phone_re = '/^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]\d{2}-?\d{4}$/';
+        if ($error['phone'] == '' && !preg_match($phone_re, $form['phone'])) {
+            $error['phone'] = $error_open . "Please enter a valid phone number!" . $error_close;
+            $valid_form = FALSE;
+        }
+        $email_re = '/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/';
+        if ($error['email'] == '' && !preg_match($email_re, $form['email'])) {
+            $error['email'] = $error_open . "Please enter a valid email!" . $error_close;
+            $valid_form = FALSE;
+        }
+
     }
 
     // check for valid form

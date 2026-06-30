@@ -3,8 +3,8 @@
     <head>
         <title>Form Validation Example</title>
         <meta tbd>        
-        <script type="text/javascript" src="xjquery.js"></script>
-        <script type="text/javascript" src="xvalidate.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="validate.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function(){
