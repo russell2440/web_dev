@@ -55,11 +55,55 @@ if (isset($_POST['submit']))
 
     }
 
-    // check for valid form
+    // Check form for bad data
+    {
+        if (contains_bad_str($form['name']) ||
+            contains_bad_str($form['phone']) ||
+            contains_bad_str($form['email']) ||
+            contains_bad_str($form['fax']) ||
+            contains_bad_str($form['comments'])) {
+            $valid_form = false;
+        }
+        if (contains_newline($form['name']) ||
+            contains_newline($form['phone']) ||
+            contains_newline($form['email']) ||
+            contains_newline($form['fax'])) {
+            $valid_form = false;
+        }
+    }
+
+//print_r($form);
+
+    // Process valid form
+    // or display form again
     if ($valid_form) {
+        // Create message and email it.
+        $to = "example@example.com";
+        $subject = "Message from your website domain.com";
+
+        $message =   'Name: ' . $form['name'] . "\n";
+        $message .=  'Email: ' . $form['email'] . "\n";
+        $message .=  'Phone: ' . $form['phone'] . "\n";
+        $message .=  'Fax: ' . $form['fax'] . "\n\n";
+        $message .=  'Message: ' . $form['comments'];
+
+        $headers = "From: www.example.com <admin@example.com>\r\n";
+        $headers .= "X-Sender: <admin@example.com>\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+        $headers .= "Reply-To: " . $form['email'];
+
+        //echo "Calling mail() in 3";
+        //sleep(3);
+
+        mail($to, $subject, $message, $headers);
+
+        //echo "Calling header() in 3";
+        //sleep(3);
+
         // redirect
         header("Location: " . $redirect);
-        //exit();
+
+        exit();
     }
     else {
         // display form
@@ -77,5 +121,27 @@ else
     include('form.php');
 }
 
+function contains_bad_str($str_to_test) {
+    $bad_strings = array(
+        "content-type:",
+        "mime-version:",
+        "multipart/mixed",
+        "Content-Transfer-Encoding:",
+        "bcc:",
+        "cc:",
+        "to:");
+
+    foreach($bad_strings as $bad_string) {
+        if (stristr(strtolower($str_to_test), $bad_string))
+            return true;
+    }
+    return false;
+}
+
+function contains_newline($str_to_test) {
+    if (preg_match("/(%0A|%0D|\\n+|\\r+)/i", $str_to_test) != 0)
+            return true;
+    return false;
+}
 
 ?>
