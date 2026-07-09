@@ -1,4 +1,7 @@
 <?php
+// Pull in validation and email functions.
+require_once 'xhelper_funcions.php';
+
 // variables
 $error_open = "<label class='error'>";
 $error_close = "</label>";
@@ -77,9 +80,12 @@ if (isset($_POST['submit']))
     // Process valid form
     // or display form again
     if ($valid_form) {
-        // Create message and email it.
-        $to = "example@example.com";
-        $subject = "Message from your website domain.com";
+        // Setup email routing parameters.
+
+        $to = "russ85226@gmail.com";
+
+        $infinity_free_domain = "merlin.gt.tc";
+        $subject = "Message from your Merlin website " . $infinity_free_domain;
 
         $message =   'Name: ' . $form['name'] . "\n";
         $message .=  'Email: ' . $form['email'] . "\n";
@@ -87,26 +93,30 @@ if (isset($_POST['submit']))
         $message .=  'Fax: ' . $form['fax'] . "\n\n";
         $message .=  'Message: ' . $form['comments'];
 
-        $headers = "From: www.example.com <admin@example.com>\r\n";
-        $headers .= "X-Sender: <admin@example.com>\r\n";
+        /*
+        $headers = "From: Merlin Webmaster <admin@".$infinity_free_domain.">\r\n";
+        $headers .= "X-Sender: <admin@".$infinity_free_domain.">\r\n";
         $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-        $headers .= "Reply-To: " . $form['email'];
+        $headers .= "Reply-To: " . $form['email'] . "\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+         */
 
-        //echo "Calling mail() in 3";
-        //sleep(3);
+        $reply_to = $form['emai'];
 
-        mail($to, $subject, $message, $headers);
-
-        //echo "Calling header() in 3";
-        //sleep(3);
-
-        // redirect
-        header("Location: " . $redirect);
-
-        exit();
+        // Drop-in wrapper function executing our SMTP logic.
+        if (send_smtp_mail($to, $subject, $message, $reply_to)) {
+            // Redirect on successful transmisison.
+            header("Location: " . $redirect);
+            exit();
+        } else {
+            // Default back to rendering the form on
+            // SMTP authentication or connection fail.
+            $error['email'] = $error_open . "Mail transmission failed. Please try again later." . $error_close;
+            include('form.php');
+        }
     }
     else {
-        // display form
+        // Display form with validation errors.
         include('form.php');
     }
 }
