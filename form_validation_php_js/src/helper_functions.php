@@ -15,17 +15,20 @@ function send_smtp_mail($to, $subject, $message, $replyTo) {
     $mail = new PHPMailer(true);
 
     try {
+        $username = "russ85226@gmail.com";
+        $password = "ixhszownbxelsnnu";
+
         // Server Settings
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'your_gmail_address@gmail.com'; // Replace with your real Gmail
-        $mail->Password   = 'your_gmail_app_password';      // Replace with your 16-character App Password
+        $mail->Username   = $username; // Replace with your real Gmail
+        $mail->Password   = $password; // Replace with your 16-character App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // Routing Configuration
-        $mail->setFrom('your_gmail_address@gmail.com', 'Merlin Webmaster');
+        $mail->setFrom($username, 'Merlin Webmaster');
         $mail->addAddress($to);
         $mail->addReplyTo($replyTo);
 

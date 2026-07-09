@@ -1,6 +1,6 @@
 <?php
 // Pull in validation and email functions.
-require_once 'xhelper_funcions.php';
+require_once 'helper_functions.php';
 
 // variables
 $error_open = "<label class='error'>";
@@ -93,15 +93,7 @@ if (isset($_POST['submit']))
         $message .=  'Fax: ' . $form['fax'] . "\n\n";
         $message .=  'Message: ' . $form['comments'];
 
-        /*
-        $headers = "From: Merlin Webmaster <admin@".$infinity_free_domain.">\r\n";
-        $headers .= "X-Sender: <admin@".$infinity_free_domain.">\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-        $headers .= "Reply-To: " . $form['email'] . "\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-         */
-
-        $reply_to = $form['emai'];
+        $reply_to = $form['email'];
 
         // Drop-in wrapper function executing our SMTP logic.
         if (send_smtp_mail($to, $subject, $message, $reply_to)) {
@@ -130,28 +122,3 @@ else
     // display form
     include('form.php');
 }
-
-function contains_bad_str($str_to_test) {
-    $bad_strings = array(
-        "content-type:",
-        "mime-version:",
-        "multipart/mixed",
-        "Content-Transfer-Encoding:",
-        "bcc:",
-        "cc:",
-        "to:");
-
-    foreach($bad_strings as $bad_string) {
-        if (stristr(strtolower($str_to_test), $bad_string))
-            return true;
-    }
-    return false;
-}
-
-function contains_newline($str_to_test) {
-    if (preg_match("/(%0A|%0D|\\n+|\\r+)/i", $str_to_test) != 0)
-            return true;
-    return false;
-}
-
-?>
