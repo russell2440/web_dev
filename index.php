@@ -10,8 +10,7 @@
 </html>
 
 <?php
-sleep(4);
-header("Location: crud_with_php_and_mysqli/connect_db.php");
+header("Location: crud_with_php_and_mysqli/view.php");
 //header("Location: form_validation_php_js/index.php");
 //exit();
 ?>
