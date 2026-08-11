@@ -1,3 +1,8 @@
+<?php
+// Always start the session at the top of the page.
+session_start();
+?>
+
 <!DOCTYPE HTML PUBLIC>
 <html>
     <head>
@@ -5,6 +10,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf8-8" />
     </head>
     <body>
+
+<?php
+// 2. Check for and display success message.
+if (isset($_SESSION['flash_message'])) {
+    echo "<div class='alert_success'>".htmlentities($_SESSION['flash_message'])."</div>";
+    // clear it so it only shows once
+    unset($_SESSION['flash_message']);
+}
+
+// 3. Check for and display error message.
+if (isset($_SESSION['flash_error'])) {
+    echo "<div class='alert_error'>".htmlentities($_SESSION['flash_error'])."</div>";
+    // clear it so it only shows once
+    unset($_SESSION['flash_error']);
+}
+?>
+
         <h1>View Records</h1>
 
         <?php

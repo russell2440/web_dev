@@ -107,7 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_GET['id'])) {
         if (isset($_POST['submit'])) {
             if (is_numeric($_POST['id'])) {
-                echo 'Form Submitted!';
+                // 1. Session must start before any HTML or output.
+                session_start();
+
                 $id = $_POST['id'];
                 $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
                 $lastname = htmlentities($_POST['lastname'], ENT_QUOTES);
@@ -120,8 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt->bind_param('ssi', $firstname, $lastname, $id);
                         $stmt->execute();
                         $stmt->close();
+
+                        // Set the flash message in the session.
+                        $_SESSION['flash_message'] = 'SUCESS: '.$firstname.' '.$lastname.'(ID: '.$id.')';
                     } else {
-                        echo 'ERROR: Could not prepare SQL statement.';
+                        $_SESSION['flash_error'] = 'ERROR: Could not prepare SQL statement.';
                     }
 
                     header("Location: view.php");
