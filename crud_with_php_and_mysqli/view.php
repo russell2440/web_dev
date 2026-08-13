@@ -1,6 +1,5 @@
 <?php
-// Always start the session at the top of the page.
-session_start();
+require_once 'flash_helper.php';
 ?>
 
 <!DOCTYPE HTML PUBLIC>
@@ -8,24 +7,20 @@ session_start();
     <head>
         <title>View Records</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf8-8" />
+                <style>
+                    .alert { padding: 12px; margin-bottom: 15px; border-radius: 4px; font-family: sans-serif; }
+                    .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+                    .alert-danger  { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+                    .alert-info    { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+                </style>
     </head>
     <body>
+        <!-- Option A: Render ALL queued flash messages automatically -->
+        <?php flash(); ?>
 
-<?php
-// 2. Check for and display success message.
-if (isset($_SESSION['flash_message'])) {
-    echo "<div class='alert_success'>".htmlentities($_SESSION['flash_message'])."</div>";
-    // clear it so it only shows once
-    unset($_SESSION['flash_message']);
-}
+        <!-- Option B: Render only a specific message key explicitly -->
+        <!-- <?php flash('success'); ?> -->
 
-// 3. Check for and display error message.
-if (isset($_SESSION['flash_error'])) {
-    echo "<div class='alert_error'>".htmlentities($_SESSION['flash_error'])."</div>";
-    // clear it so it only shows once
-    unset($_SESSION['flash_error']);
-}
-?>
 
         <h1>View Records</h1>
 
@@ -58,7 +53,7 @@ if (isset($_SESSION['flash_error'])) {
             $mysqli->close();
         ?>
 
-        <a href="records.php">Add New Record</a>;
+        <a href="records.php">Add New Record</a>
 
     </body>
 </html>

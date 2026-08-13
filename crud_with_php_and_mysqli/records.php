@@ -1,4 +1,7 @@
 <?php
+    // Put this at the VERY top of records.php!
+    require_once('flash_helper.php');
+
     function render_edit_form($firstname = '', $lastname = '', $error = '', $id = '')
     {
 ?>
@@ -9,6 +12,12 @@
                     <?php echo 'Edit Record'; ?>
                 </title>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf8-8" />
+                <style>
+                    .alert { padding: 12px; margin-bottom: 15px; border-radius: 4px; font-family: sans-serif; }
+                    .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+                    .alert-danger  { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+                    .alert-info    { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+                </style>
             </head>
             <body>
                 <h1><?php echo 'Edit Record'; ?></h1>
@@ -105,10 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include('connect_db.php');
 
     if (isset($_GET['id'])) {
+        // edit existing record
         if (isset($_POST['submit'])) {
             if (is_numeric($_POST['id'])) {
-                // 1. Session must start before any HTML or output.
-                session_start();
 
                 $id = $_POST['id'];
                 $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
@@ -123,10 +131,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt->execute();
                         $stmt->close();
 
-                        // Set the flash message in the session.
-                        $_SESSION['flash_message'] = 'SUCESS: '.$firstname.' '.$lastname.'(ID: '.$id.')';
+                        // Set a success flash message
+                        flash('success', "Updated player: {$firstname} {$lastname}", 'success');
                     } else {
-                        $_SESSION['flash_error'] = 'ERROR: Could not prepare SQL statement.';
+                        flash('error', 'Could not prepare SQL statement.', 'danger');
                     }
 
                     header("Location: view.php");
@@ -136,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Error: posted id";
             }
         } else {
-            // edit existing record
             if (is_numeric($_GET['id']) && $_GET['id'] > 0) {
                 // Query database
                 $id = $_GET['id'];
@@ -156,6 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             } else {
                 header("Location: view.php");
+                exit();
             }
         }
     } else {
@@ -172,11 +180,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->bind_param('ss', $firstname, $lastname);
                     $stmt->execute();
                     $stmt->close();
+
+                    // Set a success flash message
+                    flash('success', "Added a new player: {$firstname} {$lastname}", 'success');
                 } else {
-                    echo 'ERROR: Could not prepare SQL statement.';
+                    flash('error', 'Could not prepare SQL statement.', 'danger');
                 }
 
                 header("Location: view.php");
+                exit();
             }
         } else {
             render_add_form();
