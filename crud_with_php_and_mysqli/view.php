@@ -37,7 +37,7 @@ require_once 'flash_helper.php';
                         echo "<td>" . $row->id . "</td>";
                         echo "<td>" . $row->firstname . "</td>";
                         echo "<td>" . $row->lastname . "</td>";
-                        echo "<td><a href='records.php?id=" . $row->id . "'>Edit</a></td>";
+                        echo "<td><a href='edit.php?id=" . $row->id . "'>Edit</a></td>";
                         echo "<td><a href='delete.php?id=" . $row->id . "'>Delete</a></td>";
                         echo "</tr>";
                     }
@@ -53,7 +53,7 @@ require_once 'flash_helper.php';
             $mysqli->close();
         ?>
 
-        <a href="records.php">Add New Record</a>
+        <a href="add.php">Add New Record</a>
 
     </body>
 </html>
