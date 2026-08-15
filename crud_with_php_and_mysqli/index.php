@@ -3,7 +3,7 @@
   <head>
     <title>CRUD with PHP and mySQLi</title>
     <!-- Automatically redirects after 3 seconds -->
-    <meta http-equiv="refresh" content="3;url=view.php">
+    <meta http-equiv="refresh" content="3;url=src/view.php">
   </head>
   <body>
     <h1>Welcome to MAMP Server!</h1>
