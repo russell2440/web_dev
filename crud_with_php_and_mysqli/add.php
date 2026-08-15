@@ -1,6 +1,5 @@
 <?php
     // Put this at the VERY top of add.php!
-    require_once('flash_helper.php');
 
     function render_add_form($firstname = '', $lastname = '', $error = '')
     {
@@ -39,7 +38,6 @@
 
 
 
-
 <?php
 
 /***************************************
@@ -66,35 +64,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 //----------------------------------------
 ****************************************/
-    include('connect_db.php');
 
-    {
-        // create new record
-        if (isset($_POST['submit'])) {
-            $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
-            $lastname = htmlentities($_POST['lastname'], ENT_QUOTES);
+    require_once('connect_db.php');
+    require_once('flash_helper.php');
 
-            if ($firstname == '' ||  $lastname == '') {
-                $error = 'ERROR: Please fill in all required fields!';
-                render_add_form($firstname, $lastname, $error);
-            } else {
-                if ($stmt = $mysqli->prepare("INSERT players (firstname, lastname) VALUES (?, ?)")) {
-                    $stmt->bind_param('ss', $firstname, $lastname);
-                    $stmt->execute();
-                    $stmt->close();
+    // create new record
+    if (isset($_POST['submit'])) {
+        $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
+        $lastname = htmlentities($_POST['lastname'], ENT_QUOTES);
 
-                    // Set a success flash message
-                    flash('success', "Added new player: {$firstname} {$lastname}", 'success');
-                } else {
-                    flash('error', 'Could not prepare INSERT SQL statement.', 'danger');
-                }
-
-                header("Location: view.php");
-                exit();
-            }
+        if ($firstname == '' ||  $lastname == '') {
+            $error = 'ERROR: Please fill in all required fields!';
+            render_add_form($firstname, $lastname, $error);
         } else {
-            render_add_form();
+            if ($stmt = $mysqli->prepare("INSERT players (firstname, lastname) VALUES (?, ?)")) {
+                $stmt->bind_param('ss', $firstname, $lastname);
+                $stmt->execute();
+                $stmt->close();
+
+                // Set a success flash message
+                flash('success', "Added new player: {$firstname} {$lastname}", 'success');
+            } else {
+                flash('error', 'Could not prepare INSERT SQL statement.', 'danger');
+            }
+
+            header("Location: view.php");
+            exit();
         }
+    } else {
+        render_add_form();
     }
 
 ?>

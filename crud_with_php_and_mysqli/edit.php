@@ -1,6 +1,4 @@
 <?php
-    // Put this at the VERY top of edit.php!
-    require_once('flash_helper.php');
 
     function render_edit_form($firstname = '', $lastname = '', $error = '', $id = '')
     {
@@ -76,63 +74,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 //----------------------------------------
 ****************************************/
-    include('connect_db.php');
 
-    {
-        // edit existing record
-        if (isset($_POST['submit'])) {
-            if (is_numeric($_POST['id'])) {
+    require_once('connect_db.php');
+    require_once('flash_helper.php');
 
-                $id = $_POST['id'];
-                $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
-                $lastname = htmlentities($_POST['lastname'], ENT_QUOTES);
+    // edit existing record
+    if (isset($_POST['submit'])) {
+        if (is_numeric($_POST['id'])) {
 
-                if ($firstname == '' ||  $lastname == '') {
-                    $error = 'ERROR: Please fill in all required fields!';
-                    render_edit_form($firstname, $lastname, $error, $id);
-                } else {
-                    if ($stmt = $mysqli->prepare("UPDATE players SET firstname = ?, lastname = ? WHERE id=?")) {
-                        $stmt->bind_param('ssi', $firstname, $lastname, $id);
-                        $stmt->execute();
-                        $stmt->close();
+            $id = $_POST['id'];
+            $firstname = htmlentities($_POST['firstname'], ENT_QUOTES);
+            $lastname = htmlentities($_POST['lastname'], ENT_QUOTES);
 
-                        // Set a success flash message
-                        flash('success', "Updated player: {$firstname} {$lastname} {$id}", 'success');
-                    } else {
-                        flash('error', 'Could not prepare UPDATE SQL statement.', 'danger');
-                    }
-
-                    header("Location: view.php");
-                    exit();
-                }
+            if ($firstname == '' ||  $lastname == '') {
+                $error = 'ERROR: Please fill in all required fields!';
+                render_edit_form($firstname, $lastname, $error, $id);
             } else {
-                echo "Error: posted id";
-            }
-        } else {
-            if (is_numeric($_GET['id']) && $_GET['id'] > 0) {
-                // Query database
-                $id = $_GET['id'];
-
-                if ($stmt = $mysqli->prepare("SELECT * FROM players WHERE id=?")) {
-                    $stmt->bind_param('i', $id);
+                if ($stmt = $mysqli->prepare("UPDATE players SET firstname = ?, lastname = ? WHERE id=?")) {
+                    $stmt->bind_param('ssi', $firstname, $lastname, $id);
                     $stmt->execute();
-
-                    $stmt->bind_result($id, $firstname, $lastname);
-                    $stmt->fetch();
-
-                    render_edit_form($firstname, $lastname, NULL, $id);
-
                     $stmt->close();
 
                     // Set a success flash message
-                    flash('success', "Selected player: {$firstname} {$lastname} {$id}", 'success');
+                    flash('success', "Updated player: {$firstname} {$lastname} {$id}", 'success');
                 } else {
-                    flash('error', 'Could not prepare SELECT SQL statement.', 'danger');
+                    flash('error', 'Could not prepare UPDATE SQL statement.', 'danger');
                 }
-            } else {
+
                 header("Location: view.php");
                 exit();
             }
+        } else {
+            echo "Error: posted id";
+        }
+    } else {
+        if (is_numeric($_GET['id']) && $_GET['id'] > 0) {
+            // Query database
+            $id = $_GET['id'];
+
+            if ($stmt = $mysqli->prepare("SELECT * FROM players WHERE id=?")) {
+                $stmt->bind_param('i', $id);
+                $stmt->execute();
+
+                $stmt->bind_result($id, $firstname, $lastname);
+                $stmt->fetch();
+
+                render_edit_form($firstname, $lastname, NULL, $id);
+
+                $stmt->close();
+
+                // Set a success flash message
+                flash('success', "Selected player: {$firstname} {$lastname} {$id}", 'success');
+            } else {
+                flash('error', 'Could not prepare SELECT SQL statement.', 'danger');
+            }
+        } else {
+            header("Location: view.php");
+            exit();
         }
     }
 

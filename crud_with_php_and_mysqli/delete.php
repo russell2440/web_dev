@@ -1,6 +1,6 @@
 <?php
 
-    include('connect_db.php');
+    require_once('connect_db.php');
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $id = $_GET['id'];
