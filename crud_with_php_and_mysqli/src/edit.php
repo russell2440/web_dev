@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = 'ERROR: Please fill in all required fields!';
                 render_edit_form($firstname, $lastname, $error, $id);
             } else {
-                if ($stmt = $mysqli->prepare("UPDATE players SET firstname = ?, lastname = ? WHERE id=?")) {
+                if ($stmt = $mysqli->prepare("UPDATE players SET firstname = ?, lastname = ? WHERE id = ?")) {
                     $stmt->bind_param('ssi', $firstname, $lastname, $id);
                     $stmt->execute();
                     $stmt->close();
