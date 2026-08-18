@@ -1,5 +1,4 @@
 <?php
-
     require_once('connect_db.php');
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -13,7 +12,6 @@
         }
         $mysqli->close();
     }
-    
-    header("Location: view.php");
 
+    header("Location: view.php");
 ?>

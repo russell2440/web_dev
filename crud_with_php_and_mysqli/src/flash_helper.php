@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
  * @param string|null $message The message text to set. Leave empty to display messages.
  * @param string      $class   CSS class modifier for styling (default: 'info').
  */
-function flash($name = null, $message = null, $class = 'info') {
+function flash_set($name = null, $message = null, $class = 'info') {
     // SCENARIO 1: Setting a message
     if (!empty($name) && !empty($message)) {
         // Clear any old message under this key first
@@ -24,13 +24,15 @@ function flash($name = null, $message = null, $class = 'info') {
         ];
         return;
     }
+}
 
+function flash($name = null, $message = null) {
     // SCENARIO 2: Displaying a specific message by name
     if (!empty($name) && empty($message)) {
         if (!empty($_SESSION['flash'][$name])) {
             $msg = $_SESSION['flash'][$name];
             unset($_SESSION['flash'][$name]); // Remove after displaying
-            
+
             echo '<div class="alert alert-' . htmlspecialchars($msg['class']) . '">' 
                . htmlspecialchars($msg['message']) 
                . '</div>';

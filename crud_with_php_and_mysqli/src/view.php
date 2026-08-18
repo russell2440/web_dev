@@ -2,25 +2,20 @@
 require_once 'flash_helper.php';
 ?>
 
-<!DOCTYPE HTML PUBLIC>
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>View Records</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf8-8" />
-                <style>
-                    .alert { padding: 12px; margin-bottom: 15px; border-radius: 4px; font-family: sans-serif; }
-                    .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-                    .alert-danger  { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-                    .alert-info    { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
-                </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style>
+            .alert { padding: 12px; margin-bottom: 15px; border-radius: 4px; font-family: sans-serif; }
+            .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+            .alert-danger  { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+            .alert-info    { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        </style>
     </head>
     <body>
-        <!-- Option A: Render ALL queued flash messages automatically -->
         <?php flash(); ?>
-
-        <!-- Option B: Render only a specific message key explicitly -->
-        <!-- <?php flash('success'); ?> -->
-
 
         <h1>View Records</h1>
 
@@ -53,8 +48,9 @@ require_once 'flash_helper.php';
             $mysqli->close();
         ?>
 
-        <a href="add.php">Add New Record</a>
+        <br>
+        <a href="add.php">Add New Record</a> | 
+        <a href="../index.php">Back to Main Menu</a>
 
     </body>
 </html>
-

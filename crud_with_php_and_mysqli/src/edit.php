@@ -96,9 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->close();
 
                     // Set a success flash message
-                    flash('success', "Updated player: {$firstname} {$lastname} {$id}", 'success');
+                    flash_set('success', "Updated player: {$firstname} {$lastname} {$id}", 'success');
                 } else {
-                    flash('error', 'Could not prepare UPDATE SQL statement.', 'danger');
+                    flash_set('error', 'Could not prepare UPDATE SQL statement.', 'danger');
                 }
 
                 header("Location: view.php");
@@ -124,9 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->close();
 
                 // Set a success flash message
-                flash('success', "Selected player: {$firstname} {$lastname} {$id}", 'success');
+                flash_set('success', "Selected player: {$firstname} {$lastname} {$id}", 'success');
             } else {
-                flash('error', 'Could not prepare SELECT SQL statement.', 'danger');
+                flash_set('error', 'Could not prepare SELECT SQL statement.', 'danger');
             }
         } else {
             header("Location: view.php");

@@ -83,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->close();
 
                 // Set a success flash message
-                flash('success', "Added new player: {$firstname} {$lastname}", 'success');
+                flash_set('success', "Added new player: {$firstname} {$lastname}", 'success');
             } else {
-                flash('error', 'Could not prepare INSERT SQL statement.', 'danger');
+                flash_set('error', 'Could not prepare INSERT SQL statement.', 'danger');
             }
 
             header("Location: view.php");
