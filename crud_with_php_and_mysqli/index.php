@@ -18,7 +18,7 @@
     <div class="card">
         <h3>Option 1: View Database Directly</h3>
         <p>Go directly to the view page to see current database records.</p>
-        <a href="src/view.php" class="btn">Proceed to View Page</a>
+        <a href="src/view_paginated.php" class="btn">Proceed to View Page</a>
     </div>
 
     <!-- Option 2: Link to Reset Script (Which redirects to View) -->
