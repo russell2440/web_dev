@@ -54,11 +54,17 @@ $result = $stmt->get_result();
 
         <?php if ($total_results > 0): ?>
             
-            <!-- Direct Page Number List -->
+            <!-- Standard Sequential Pagination Controls -->
             <div class="pagination">
-                <a href="view.php">View All</a> |
+                <a href="view_all.php">View All</a> |
                 <b>Page: </b>
 
+                <!-- Previous Link -->
+                <?php if ($page > 1): ?>
+                    <a href="view_paginated.php?page=<?= $page - 1 ?>">&laquo; Prev</a>
+                <?php endif; ?>
+
+                <!-- Full Page Number List -->
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                     <?php if ($i == $page): ?>
                         <span class="active"><?= $i ?></span>
@@ -66,6 +72,11 @@ $result = $stmt->get_result();
                         <a href="view_paginated.php?page=<?= $i ?>"><?= $i ?></a>
                     <?php endif; ?>
                 <?php endfor; ?>
+
+                <!-- Next Link -->
+                <?php if ($page < $total_pages): ?>
+                    <a href="view_paginated.php?page=<?= $page + 1 ?>">Next &raquo;</a>
+                <?php endif; ?>
             </div>
 
             <!-- Records Table -->
