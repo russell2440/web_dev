@@ -2,3 +2,4 @@
 .idea
 .netlify
 tmp
+gemini_debug.log
