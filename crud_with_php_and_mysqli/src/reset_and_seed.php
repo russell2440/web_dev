@@ -47,6 +47,6 @@ $mysqli->close();
 flash_set('success', 'Database successfully reset and seeded with 100 players!');
 
 // Redirect straight to view page
-header("Location: view.php");
+header("Location: view_paginated.php");
 exit();
 ?>

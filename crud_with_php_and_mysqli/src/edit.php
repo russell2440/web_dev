@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     flash_set('error', 'Could not prepare UPDATE SQL statement.', 'danger');
                 }
 
-                header("Location: view.php");
+                header("Location: view_all.php");
                 exit();
             }
         } else {
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 flash_set('error', 'Could not prepare SELECT SQL statement.', 'danger');
             }
         } else {
-            header("Location: view.php");
+            header("Location: view_all.php");
             exit();
         }
     }

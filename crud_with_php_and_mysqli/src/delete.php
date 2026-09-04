@@ -13,5 +13,5 @@
         $mysqli->close();
     }
 
-    header("Location: view.php");
+    header("Location: view_all.php");
 ?>

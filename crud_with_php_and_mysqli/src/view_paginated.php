@@ -56,7 +56,7 @@ $result = $stmt->get_result();
             
             <!-- Direct Page Number List -->
             <div class="pagination">
-                <a href="view.php">View All</a> |
+                <a href="view_all.php">View All</a> |
                 <b>Page: </b>
 
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
