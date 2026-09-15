@@ -18,12 +18,15 @@ function flash_set($name = null, $message = null, $class = 'info') {
         if (!empty($_SESSION['flash'][$name])) {
             unset($_SESSION['flash'][$name]);
         }
+
         $_SESSION['flash'][$name] = [
             'message' => $message,
             'class'   => $class
         ];
-        return;
     }
+    
+    // Always close session write lock immediately after modifying
+    session_write_close();
 }
 
 function flash($name = null, $message = null) {
@@ -33,6 +36,28 @@ function flash($name = null, $message = null) {
             $msg = $_SESSION['flash'][$name];
             unset($_SESSION['flash'][$name]); // Remove after displaying
 
+            // Release session lock before outputting HTML
+            session_write_close();
+
+            echo '<div class="alert alert-' . htmlspecialchars($msg['class']) . '">' 
+               . htmlspecialchars($msg['message']) 
+               . '</div>';
+            return;
+        }
+        
+        session_write_close();
+        return;
+    }
+
+    // SCENARIO 3: Displaying ALL pending flash messages (if no $name provided)
+    if (empty($name) && !empty($_SESSION['flash'])) {
+        $messages = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        
+        // Release session lock immediately so other pages don't block
+        session_write_close();
+
+        foreach ($messages as $key => $msg) {
             echo '<div class="alert alert-' . htmlspecialchars($msg['class']) . '">' 
                . htmlspecialchars($msg['message']) 
                . '</div>';
@@ -40,13 +65,6 @@ function flash($name = null, $message = null) {
         return;
     }
 
-    // SCENARIO 3: Displaying ALL pending flash messages (if no $name provided)
-    if (empty($name) && !empty($_SESSION['flash'])) {
-        foreach ($_SESSION['flash'] as $key => $msg) {
-            echo '<div class="alert alert-' . htmlspecialchars($msg['class']) . '">' 
-               . htmlspecialchars($msg['message']) 
-               . '</div>';
-            unset($_SESSION['flash'][$key]);
-        }
-    }
+    // If no flash messages exist at all, close session immediately
+    session_write_close();
 }
