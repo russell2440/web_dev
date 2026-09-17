@@ -1,12 +1,14 @@
 <?php
 
+require_once 'flash_helper.php';
+
 /**
  * Fetches a dynamically generated list of players from the Gemini API.
  * 
  * @return array Array of [firstname, lastname] pairs.
  */
 function generate_dynamic_players(): array {
-    $apiKey = getenv('GEMINI_API_KEY') ?: "";
+    $apiKey = getenv('GEMINI_API_KEY');
     
     if (!$apiKey) {
         return [
@@ -16,7 +18,9 @@ function generate_dynamic_players(): array {
     }
 
     $count = rand(80, 120);
-    $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . trim($apiKey);
+
+    //$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . trim($apiKey);
+    $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=" . trim($apiKey);
 
     $promptText = "Generate a list of exactly {$count} realistic American first and last names commonly used between the 1950s and 1980s.";
 
@@ -56,6 +60,8 @@ function generate_dynamic_players(): array {
     $response = '';
     $curlError = '';
 
+    set_time_limit(60); // Ensure PHP script won't crash mid-request
+
     while ($attempt < $maxRetries) {
         $attempt++;
         
@@ -66,8 +72,9 @@ function generate_dynamic_players(): array {
             CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
             CURLOPT_POSTFIELDS     => json_encode($payload),
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_CONNECTTIMEOUT => 3, // Max 3 seconds to connect
-            CURLOPT_TIMEOUT        => 5  // Max 5 seconds total per call
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_CONNECTTIMEOUT => 15, // 15s to establish connection
+            CURLOPT_TIMEOUT        => 45  // 45s total execution window
         ]);
 
         $response = curl_exec($ch);
@@ -80,11 +87,11 @@ function generate_dynamic_players(): array {
             break;
         }
 
-        // If server capacity issue (503/429), sleep briefly before trying again
-        if ($httpCode === 503 || $httpCode === 429) {
+        // Only sleep and retry if the server was temporarily overloaded (503)
+        if ($httpCode === 503) {
             sleep(1); 
         } else {
-            // For hard errors (like 404 or auth issues), fail fast
+            // Fail fast on 429 (Rate Limit Exceeded), 400, 401, 404, etc.
             break;
         }
     }
