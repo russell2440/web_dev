@@ -1,14 +1,21 @@
 <?php
 
-$server = 'localhost';
+$host = 'localhost';
 $user = 'root';
 $pass = 'root';
 $db = 'records2';
 
-$mysqli = new mysqli($server, $user, $pass, $db);
+/*
+$host = 'sql302.infinityfree.com';
+$user = 'if0_42358185';
+$pass = 'Merlin85226';
+$db   = 'if0_42358185_db_1';
+ */
+
+$mysqli = new mysqli($host, $user, $pass, $db);
+
 mysqli_report(MYSQLI_REPORT_ERROR);
 
-// Create the table
-/*
-CREATE TABLE `records2`.`players` (`id` INT NOT NULL AUTO_INCREMENT , `firstname` VARCHAR(32) NOT NULL , `lastname` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
- */
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}

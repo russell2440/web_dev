@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . '/src/connect_db.php';
+require_once __DIR__ . '/src/db_helper.php';
+
+// Run table check
+init_db_tables($mysqli);
+flash();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
