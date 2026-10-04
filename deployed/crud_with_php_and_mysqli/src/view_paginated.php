@@ -1,6 +1,8 @@
 <?php
-require_once 'flash_helper.php';
-require_once 'connect_db.php';
+require_once __DIR__ . '/db_connect.php';
+require_once('flash_helper.php');
+
+$mysqli = db_connect();
 
 $per_page = 10;
 

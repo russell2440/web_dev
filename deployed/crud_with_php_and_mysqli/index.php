@@ -1,12 +1,3 @@
-<?php
-require_once __DIR__ . '/src/connect_db.php';
-require_once __DIR__ . '/src/db_helper.php';
-
-// Run table check
-init_db_tables($mysqli);
-flash();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,18 +14,32 @@ flash();
     <h2>CRUD with PHP and MySQLi</h2>
     <p>Please select an option below:</p>
 
-    <!-- Option 1: Direct Link to View Page -->
+    <!-- Option 1: Delete 'players' table -->
     <div class="card">
-        <h3>Option 1: View Database Directly</h3>
-        <p>Go directly to the view page to see current database records.</p>
-        <a href="src/view_all.php" class="btn">Proceed to View All Page</a>
+        <h3>Option 1: Delete 'players' table</h3>
+        <p>Delete 'players' table.</p>
+        <a href="src/delete_table.php" class="btn btn-danger">Delete 'players' table</a>
     </div>
 
-    <!-- Option 2: Link to Reset Script (Which redirects to View) -->
+    <!-- Option 2: Create 'players' table -->
     <div class="card">
-        <h3>Option 2: Reset & Seed Database</h3>
+        <h3>Option 2: Create 'players' table</h3>
+        <p>Create 'players' table.</p>
+        <a href="src/create_table.php" class="btn">Create 'players' table</a>
+    </div>
+
+    <!-- Option 3: Link to Reset Script (Which redirects to View) -->
+    <div class="card">
+        <h3>Option 3: Reset & Seed Database</h3>
         <p>Truncate the table, insert sample records, and then automatically proceed to the view page.</p>
         <a href="src/reset_and_seed.php" class="btn btn-danger">Reset, Seed & View</a>
+    </div>
+
+    <!-- Option 4: View 'players' table -->
+    <div class="card">
+        <h3>Option 4: View Database Directly</h3>
+        <p>Go directly to the view page to see current database records.</p>
+        <a href="src/view_all.php" class="btn">Proceed to View All Page</a>
     </div>
 </body>
 </html>

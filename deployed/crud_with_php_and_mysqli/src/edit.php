@@ -75,8 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //----------------------------------------
 ****************************************/
 
-    require_once('connect_db.php');
+    require_once __DIR__ . '/db_connect.php';
     require_once('flash_helper.php');
+
+    $mysqli = db_connect();
 
     // edit existing record
     if (isset($_POST['submit'])) {

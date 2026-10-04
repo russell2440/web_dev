@@ -1,5 +1,8 @@
 <?php
-    require_once('connect_db.php');
+    require_once __DIR__ . '/db_connect.php';
+
+    $mysqli = db_connect();
+
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $id = $_GET['id'];

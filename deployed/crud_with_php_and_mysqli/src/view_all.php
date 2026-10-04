@@ -20,7 +20,10 @@ require_once 'flash_helper.php';
         <h1>View Records</h1>
 
         <?php
-            include("connect_db.php");
+            require_once __DIR__ . '/db_connect.php';
+            require_once('flash_helper.php');
+
+            $mysqli = db_connect();
 
             if ($result = $mysqli->query("SELECT * FROM players ORDER BY id")) {
                 if ($result->num_rows > 0) {
