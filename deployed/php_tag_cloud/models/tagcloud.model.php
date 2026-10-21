@@ -15,7 +15,7 @@ class tagcloud_model {
         echo '<pre>';
         print_r($this->tags);
         echo '</pre>';
-        exit;
+        die('<h2>tag cloud constructed</h2>');
     }
 
     /* Utility functions

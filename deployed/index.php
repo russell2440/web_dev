@@ -22,6 +22,10 @@ header("Location: form_validation_php_js/index.php");
         <a href="form_validation_php_js/index.php">Form validation php and JS</a>
     </div>
     <div>
+        <a href="php_tag_cloud/index.php">Php tag cloud</a>
+    </div>
+    <div>
+    <div>
         <a href="my_website_v1/index.html">Static site</a>
     </div>
 </body>

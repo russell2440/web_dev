@@ -4,7 +4,7 @@ function initialize_database($mysqli) {
     $result = $mysqli->query("SHOW TABLES LIKE 'posts'");
     
     if ($result && $result->num_rows == 0) {
-        $sql_file = __DIR__ . '/../database.sql';
+        $sql_file = __DIR__ . '/database.sql';
         
         if (file_exists($sql_file)) {
             $sql_content = file_get_contents($sql_file);
