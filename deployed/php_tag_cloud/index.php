@@ -13,7 +13,7 @@ $data['tag_cloud'] = $tagcloud->get_tag_cloud();
 
 
 // load view
-include_once __DIR__ . "/models/tagcloud.view.php";
+include_once __DIR__ . "/views/tagcloud.view.php";
 
 // close db connection
 include_once __DIR__ . "/models/close_db.php";
