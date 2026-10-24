@@ -5,8 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <style type="text/css">
             table { width: 340px; border-collapse: collapse; };
-            .tagcloud { margin: 0; padding: 20px; width: 300px; border: 1px solid #000; text-align: center; line-height: 2.8em; };
-            .tagcloud li { display: inline; margin-right: 10px; };
+            .tagcloud { margin: 0; padding: 20px; width: 300px; border: 1px solid #000;
+                        text-align: center; line-height: 2.8em; };
+            .tagcloud li { display: inline; padding: 0 5px; };
             .tagcloud a { padding: 0; };
 
             .tagcloud a.tag1 { font-size: 0.7em; font-weight: 100; };

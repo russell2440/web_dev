@@ -85,10 +85,26 @@ class tagcloud_model {
     }
 
     function get_tag_cloud() {
+        //return '';
         if ($this->tags == FALSE) {
             return 'No tags to display';
         } else {
-        return '';
+            // Create unordered list
+            $list = '';
+
+            $list .= '<ul class="tagcloud">';
+
+            foreach ($this->tags as $tag) {
+                // create list item
+                $weight = round(($tag['total']/$this->largest) * 10);
+                $list .= "<li><a class='tag".$weight."' href='tags.php?id=". $tag['id']. "'>";
+                $list .= $tag['name'] . "<a></li>";
+                $list .= "\n";
+            }
+
+            $list .= '</ul>';
+
+            return $list;
         }
     }
 
