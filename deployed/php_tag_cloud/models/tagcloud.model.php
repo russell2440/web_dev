@@ -1,9 +1,15 @@
 <?php
 
+// Tag Cloud model class
+//=================================================
+
 class tagcloud_model {
     var $mysqli;
     var $tags; // array(id, name, total)
     var $largest;
+
+    // Constructor
+    //=================================================
 
     function __construct($conn)
     {
@@ -13,16 +19,13 @@ class tagcloud_model {
         $this->get_tags();
     }
 
-    /* Utility functions
-     * ============================================= */
+    // Utility functions
+    //=================================================
 
     function get_tags() {
         $this->tags = array();
         $this->largest = 0;
 
-        /*
-        $query_string = "SELECT posts_to_tags.tag_id, tags.name, COUNT(posts_to_tags.tag_id) AS total FROM tags, posts_to_tags WHERE post_to_tags.tag_id = tags.id GROUP BY posts_to_tags.tag_id";
-         */
         $query_string = "
             SELECT posts_to_tags.tag_id, tags.name, COUNT(posts_to_tags.tag_id) AS total
             FROM tags
@@ -55,8 +58,8 @@ class tagcloud_model {
         return strcmp($a['name'], $b['name']);
     }
 
-    /* Display functions
-     * ============================================= */
+    // Display functions
+    //=================================================
 
     function get_tag_list() {
         if ($this->tags == FALSE) {
@@ -97,9 +100,8 @@ class tagcloud_model {
             foreach ($this->tags as $tag) {
                 // create list item
                 $weight = round(($tag['total']/$this->largest) * 10);
-                $list .= "<li><a class='tag".$weight."' href='tags.php?id=". $tag['id']. "'>";
-                $list .= $tag['name'] . "<a></li>";
-                $list .= "\n";
+                $list .= "<li><a href='tags.php?id=". $tag['id']. "' class='tag".$weight."'>";
+                $list .= $tag['name'] . "</a></li>";
             }
 
             $list .= '</ul>';
