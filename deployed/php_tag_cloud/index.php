@@ -4,10 +4,10 @@
 require_once __DIR__ . "/models/database.php";
 require_once __DIR__ . "/models/tagcloud.model.php";
 
-// 1. Here is where the $database variable is created:
-$database = new database();
+// create database instance and inject the initial sql table file path[cite: 5]
+$database = new database(__DIR__ . "/models/database.sql");
 
-// 2. Here is where that $database variable is passed into the model:
+// create tagcloud here with strict database type injection
 $tagcloud = new tagcloud_model($database);
 
 $data['tag_list'] = $tagcloud->get_tag_list();

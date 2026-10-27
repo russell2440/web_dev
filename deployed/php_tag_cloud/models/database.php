@@ -6,8 +6,10 @@ class database {
     private $user = 'root';
     private $pass = 'root';
     private $db = 'tagcloud';
+    private $sql_file;
 
-    public function __construct() {
+    public function __construct($sql_file = null) {
+        $this->sql_file = $sql_file;
         $this->mysqli = new mysqli($this->server, $this->user, $this->pass, $this->db);
         
         if ($this->mysqli->connect_error) {
@@ -18,16 +20,15 @@ class database {
     }
 
     private function initialize_database() {
+        if (!$this->sql_file) {
+            return;
+        }
+
         $result = $this->mysqli->query("SHOW TABLES LIKE 'posts'");
         
         if ($result && $result->num_rows == 0) {
-            $sql_file = __DIR__ . '/../database.sql';
-            if (!file_exists($sql_file)) {
-                $sql_file = __DIR__ . '/database.sql';
-            }
-            
-            if (file_exists($sql_file)) {
-                $sql_content = file_get_contents($sql_file);
+            if (file_exists($this->sql_file)) {
+                $sql_content = file_get_contents($this->sql_file);
                 
                 if ($this->mysqli->multi_query($sql_content)) {
                     do {
@@ -42,7 +43,6 @@ class database {
         }
     }
 
-    // Generic helper method: executes any SQL string and returns rows as objects
     public function fetch_all($sql) {
         $result = $this->mysqli->query($sql);
 
