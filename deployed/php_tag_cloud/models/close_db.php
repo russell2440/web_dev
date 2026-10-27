@@ -1,6 +1,0 @@
-
-<?php
-
-$mysqli->close();
-
-?>

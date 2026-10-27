@@ -1,0 +1,12 @@
+body { font-family: Arial; margin:0; }
+h1 { background: green; padding: 20px; font-size: 1.2em; color: white; margin: 0 0 20px 0; }
+#content { padding: 0 20px; }
+
+.required { color: red; font-size: .8em; clear: both; padding-top: 20px; }
+.error { float: left; color: red; display: block; padding: 4px 0 0 10px; font-size:.8em; }
+.alert { background: #feff96; border: 1px solid yellow; padding: 8px; margin-bottom: 20px; }
+
+form { overflow: auto; }
+label { float: left; clear: both; width: 160px; display: block; }
+input, select { width: 220px; padding: 2px; margin-bottom: 4px; float: left; }
+input.submit { float: left; clear: both; width: 80px; margin-top: 20px; }

@@ -4,16 +4,16 @@
 //=================================================
 
 class tagcloud_model {
-    var $mysqli;
+    private $db;
     var $tags; // array(id, name, total)
     var $largest;
 
     // Constructor
     //=================================================
 
-    function __construct($conn)
+    function __construct(database $db)
     {
-        $this->mysqli = $conn;
+        $this->db = $db;
 
         // get tags and largest value;
         $this->get_tags();
@@ -31,10 +31,12 @@ class tagcloud_model {
             FROM tags
             JOIN posts_to_tags ON posts_to_tags.tag_id = tags.id
             GROUP BY posts_to_tags.tag_id, tags.name";
-        $result = $this->mysqli->query($query_string);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_object()) {
+        // Ask the generic database object to execute and fetch the rows
+        $rows = $this->db->fetch_all($query_string);
+
+        if ($rows !== false) {
+            foreach ($rows as $row) {
                 // check for largest
                 if ($row->total > $this->largest) {
                     $this->largest = $row->total;
@@ -88,7 +90,6 @@ class tagcloud_model {
     }
 
     function get_tag_cloud() {
-        //return '';
         if ($this->tags == FALSE) {
             return 'No tags to display';
         } else {
